@@ -96,7 +96,7 @@ This app allows for video game users to view the all their video games. They wil
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="Wireframe.png" width=600>
+<img src="Wireframe.PNG" width=800>
 
 ### [BONUS] Digital Wireframes & Mockups
 
