@@ -98,7 +98,7 @@ This app allows for video game users to view the all their video games. They wil
 <img src="Wireframe.PNG" width=800>
 
 ### [BONUS] Interactive Prototype
-<img src="Detailed.gif" width=600>
+<img src="Detailed.gif" width=400>
 
 ## Schema 
 [This section will be completed in Unit 9]
