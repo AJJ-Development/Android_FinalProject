@@ -95,7 +95,6 @@ This app allows for video game users to view the all their video games. They wil
     * User Profile -> Login
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
 <img src="Wireframe.PNG" width=800>
 
 ### [BONUS] Digital Wireframes & Mockups
