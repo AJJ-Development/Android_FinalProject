@@ -118,6 +118,16 @@ This app allows for video game users to view the all their video games. They wil
 |profilePic | File | Profile pic of the user |
 |createdAt | DateTime | Date and time user was created (default field) |
 
+#### Game
+
+| Property | Type | Description |
+|--- | --- | --- |
+|objectId | String | Unique id for the game (default field) |
+|name | String | Name of the game |
+|publisher | String | Name of the publisher |
+|description | String | Description of the game |
+|imagePath | String | Path to the cover image of the game |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
