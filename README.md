@@ -105,7 +105,19 @@ This app allows for video game users to view the all their video games. They wil
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+
+#### User
+
+| Property | Type | Description |
+|--- | --- | --- |
+|objectId | String | Unique id for the user (default field) |
+|name | String | Full name of the user |
+|username | String | Username of the user (default field) |
+|password | String | Password of the user (hidden field) |
+|email | String | Email of the user |
+|profilePic | File | Profile pic of the user |
+|createdAt | DateTime | Date and time user was created (default field) |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
