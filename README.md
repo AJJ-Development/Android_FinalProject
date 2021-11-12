@@ -127,6 +127,17 @@ This app allows for video game users to view the all their video games. They wil
 |publisher | String | Name of the publisher |
 |description | String | Description of the game |
 |imagePath | String | Path to the cover image of the game |
+|createdAt | DateTime | Date and time user was created (default field) |
+
+#### LikedGames
+
+| Property | Type | Description |
+|--- | --- | --- |
+|objectId | String | Unique id for the game (default field) |
+|name | String | Name of the liked game |
+|likes | Number | Number of likes |
+|dislikes | Number | Number of dislikes |
+|createdAt | DateTime | Date and time user was created (default field) |
 
 ### Networking
 - [Add list of network requests by screen ]
