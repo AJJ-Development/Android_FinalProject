@@ -140,6 +140,74 @@ This app allows for video game users to view the all their video games. They wil
 |createdAt | DateTime | Date and time user was created (default field) |
 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
+#### List of network requests by screen
+ * Registering Screen 
+    * (Create/POST) create a new user 
+      ```java
+      User user = new User();
+      user.setName(name);
+      user.setUserName(username);
+      user.setPassword(password);
+      user.setProfilePic(profilePicFile);
+      user.setLikedGames(likedGames);
+      user.saveInBackground(new SaveCallback() {
+          @Override
+          public void done(ParseException e) {
+              if (e != null){
+                  Log.e(TAG, "Error saving user in backend", e);
+                  return;
+              }
+          //TODO: Login user and redirect to the user profile screen
+          }
+      });
+      ```
+ * Stream Screen 
+    * (Read/GET) Query all user liked games
+    ```java
+     ParseQuery<brew> query = ParseQuery.getQuery(Games.class);
+     query.include(Games.KEY_USER);
+     query.setLimit(20);
+     query.whereEqualTo(Games.KEY_USER, ParseUser.getCurrentUser());
+     query.addDescendingOrder(Games.KEY_CREATED_KEY);
+     query.findInBackground(new FindCallback<Games>() {
+         @Override
+         public void done(List<Games> games, ParseException e) {
+             if (e!= null){
+                 Log.e(TAG,"Couldn't find content",e);
+                 return;
+             }
+             
+             //TODO: Do something with Games
+     });
+    ```
+     * (Create/POST) Create a new user liked game 
+     ```java
+      LikedGame game = new LikedGame();
+      game.setName(name)
+      game.setLikes(0)
+      game.setDislikes(0)
+      game.setUser(user)
+      brew.saveInBackground(new SaveCallback() {
+          @Override
+          public void done(ParseException e) {
+              if (e != null){
+                  Log.e(TAG, "Error saving brew in backend", e);
+                  return;
+              }
+          //TODO: Show heart next to game
+          }
+      });
+     ```
+ * Settings Screen 
+    * (Update/PUT) Update game like count
+    * (Update/PUT) Update game dislike count 
+    ```java
+      ParseQuery<ParseObject> query = ParseQuery.getQuery("LikedGames");
+
+      // Retrieve the object by id
+      query.getInBackground("<game.getId()>", (object, e) -> {
+        if (e == null) {
+          //TODO: Update likes and dislikes
+      });
+    ```
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
