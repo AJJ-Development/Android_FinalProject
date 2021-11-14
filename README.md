@@ -164,7 +164,7 @@ This app allows for video game users to view the all their video games. They wil
  * Stream Screen 
     * (Read/GET) Query all user liked games
     ```java
-     ParseQuery<brew> query = ParseQuery.getQuery(Games.class);
+     ParseQuery<game> query = ParseQuery.getQuery(Games.class);
      query.include(Games.KEY_USER);
      query.setLimit(20);
      query.whereEqualTo(Games.KEY_USER, ParseUser.getCurrentUser());
@@ -187,11 +187,11 @@ This app allows for video game users to view the all their video games. They wil
       game.setLikes(0)
       game.setDislikes(0)
       game.setUser(user)
-      brew.saveInBackground(new SaveCallback() {
+      game.saveInBackground(new SaveCallback() {
           @Override
           public void done(ParseException e) {
               if (e != null){
-                  Log.e(TAG, "Error saving brew in backend", e);
+                  Log.e(TAG, "Error saving game in backend", e);
                   return;
               }
           //TODO: Show heart next to game
