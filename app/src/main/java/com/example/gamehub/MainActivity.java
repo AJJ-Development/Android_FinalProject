@@ -28,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.i(TAG, "Log out user");
                 Toast.makeText(MainActivity.this, "Logging Out", Toast.LENGTH_SHORT).show();
-
                 // TODO: Add code from parse to log user out
+                /* ------------- Uncomment this code when Back4App connection is made ----------------
+                ParseUser.logout();
+                 */
                 goLoginActivity();
             }
         });
@@ -38,5 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private void goLoginActivity() {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
+        finish();
     }
 }

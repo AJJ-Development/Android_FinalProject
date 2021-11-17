@@ -23,6 +23,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        /* ----------- Uncomment this when back4app connection made --------------
+        if (ParseUser.getCurrentUser() != null) {
+            goMainActivity();
+        }
+        */
+
         // Initialize layout objects -------------------------------
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
@@ -30,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         btnCreateAcc = findViewById(R.id.btnCreateAcc);
 
         // Button Click Listeners ----------------------------------
+        //-------------------- LOGIN BUTTON ----------------------//
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,12 +53,13 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, emptyField+" Required", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    LoginUser(username, password);
+                    loginUser(username, password);
                 }
 
             }
         });
 
+        //-------------------- SIGNUP BUTTON ----------------------//
         btnCreateAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,10 +71,25 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // TODO: Write logic for Login User with backend Parse
-    private void LoginUser(String username, String password) {
+    private void loginUser(String username, String password) {
         Log.i(TAG, "Logging user in -- Username: " + username + " Password: " + password);
 
-        goMainActivity();
+        /* ---------------Uncomment this when back4app connection is made ------------
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if( e != null) {
+                    Log.e(TAG, "Issue with login", e);
+                    Toast.makeText(LoginActivity.this, "Issue with login!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                goMainActivity();
+                Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
+            }
+        });
+         */
+
+        goMainActivity(); //Get rid of this when back4app connection is made. It's in the commented code above
     }
 
     private void goMainActivity() {

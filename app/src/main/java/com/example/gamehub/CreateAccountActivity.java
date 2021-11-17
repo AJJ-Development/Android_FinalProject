@@ -80,13 +80,46 @@ public class CreateAccountActivity extends AppCompatActivity {
     private void loginUser(String username, String password) {
         Log.i(TAG, "Logging user in -- Username: " + username + " Password: " + password);
 
-        goMainActivity();
-        finish();
+        /* ---------------Uncomment this when back4app connection is made ------------
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if( e != null) {
+                    Log.e(TAG, "Issue with login", e);
+                    Toast.makeText(LoginActivity.this, "Issue with login!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                goMainActivity();
+                Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
+            }
+        });
+         */
+
+        goMainActivity(); //Get rid of this when back4app connection is made. It's in the commented code above
     }
 
     // TODO: Add code to create user in backend
     private void createUser(String username, String password, String email) {
         Log.i(TAG, "Create user");
+
+        /* ---------------Uncomment this when back4app connection is made ------------
+        ParseUser user = new ParseUser();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e == null) {
+                    Toast.makeText(SignUpActivity.this, "Signup Success!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.e(TAG, "Issue with sign up", e);
+                    Toast.makeText(SignUpActivity.this, "Issue with sign up!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+        });
+        */
     }
 
     private void goLoginActivity() {
@@ -97,6 +130,6 @@ public class CreateAccountActivity extends AppCompatActivity {
     private void goMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
+        finish();
     }
-
 }
