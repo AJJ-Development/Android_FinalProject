@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.parse.ParseUser;
+
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
@@ -28,10 +30,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.i(TAG, "Log out user");
                 Toast.makeText(MainActivity.this, "Logging Out", Toast.LENGTH_SHORT).show();
-                // TODO: Add code from parse to log user out
-                /* ------------- Uncomment this code when Back4App connection is made ----------------
-                ParseUser.logout();
-                 */
+                ParseUser.logOut();
                 goLoginActivity();
             }
         });
