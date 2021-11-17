@@ -36,7 +36,18 @@ public class LoginActivity extends AppCompatActivity {
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
 
-                LoginUser(username, password);
+                String emptyField = "";
+                // Populate emptyField with errors
+                if (username.equals("")) { emptyField = "Username"; }
+                else if (password.equals("")) { emptyField = "Password"; }
+
+                // If there there is an error, display it to the user, otherwise login
+                if (!emptyField.equals("")) {
+                    Toast.makeText(LoginActivity.this, emptyField+" Required", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    LoginUser(username, password);
+                }
 
             }
         });
@@ -45,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick Create Account Button");
+
                 goCreateAccountActivity();
             }
         });
@@ -52,24 +64,15 @@ public class LoginActivity extends AppCompatActivity {
 
     // TODO: Write logic for Login User with backend Parse
     private void LoginUser(String username, String password) {
-        Log.i(TAG, "Username: " + username);
-        Log.i(TAG, "Password: " + password);
+        Log.i(TAG, "Logging user in -- Username: " + username + " Password: " + password);
 
-        // Check for empty Username and password
-        if (username.equals("")) {
-            Toast.makeText(LoginActivity.this, "Username Required", Toast.LENGTH_SHORT).show();
-        }
-        else if (password.equals("")) {
-            Toast.makeText(LoginActivity.this, "Password Required", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            goMainActivity();
-        }
+        goMainActivity();
     }
 
     private void goMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
+        finish();
     }
 
     private void goCreateAccountActivity() {
