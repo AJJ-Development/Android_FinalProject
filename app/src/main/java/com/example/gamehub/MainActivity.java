@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "Log out user");
+                Toast.makeText(MainActivity.this, "Logging Out", Toast.LENGTH_SHORT).show();
 
                 // TODO: Add code from parse to log user out
                 goLoginActivity();
