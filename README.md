@@ -26,7 +26,7 @@ This app allows for video game users to view the all their video games. They wil
 
 **Required Must-have Stories**
 
-- [ ]  Account creation/login
+- [X]  Account creation/login
 - [ ]  Timeline (games)
 - [ ]  Details page for each game
     - [ ]  Display game image and title
@@ -211,3 +211,6 @@ This app allows for video game users to view the all their video games. They wil
       });
     ```
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+##Sprint 1
+<img src="Sprint1.gif" width=800>
