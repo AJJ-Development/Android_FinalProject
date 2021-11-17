@@ -212,5 +212,5 @@ This app allows for video game users to view the all their video games. They wil
     ```
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
 
-##Sprint 1
-<img src="Sprint1.gif" width=400>
+## Sprint 1
+<img src="Sprint1.gif" width=350>
