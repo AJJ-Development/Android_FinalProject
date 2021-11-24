@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@drawable/gradient_background">
 
     <Button
         android:id="@+id/btnCreateAcc"
@@ -17,6 +18,8 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/buttonColor"
         android:text="Create Account" />
 
     <EditText
@@ -25,9 +28,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="300dp"
         android:layout_marginEnd="50dp"
         android:ems="10"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:hint="Username"
         android:inputType="textPersonName"
         android:minHeight="48dp" />
@@ -39,9 +44,11 @@
         android:layout_below="@+id/etUsername"
         android:layout_alignParentStart="true"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:ems="10"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:hint="Password"
         android:inputType="textPassword"
         android:minHeight="48dp" />
@@ -53,8 +60,9 @@
         android:layout_below="@+id/etPassword"
         android:layout_alignParentStart="true"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/buttonColor"
         android:text="Login" />
 
     <TextView
@@ -63,8 +71,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="50dp"
         android:text="GAME HUB"
-        android:textSize="45sp" />
+        android:textSize="45sp"
+        android:textColor="@color/white"/>
 </RelativeLayout>
