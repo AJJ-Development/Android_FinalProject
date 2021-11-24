@@ -5,40 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.parse.ParseUser;
 
-public class ProfileActivity extends AppCompatActivity {
+public class GameListActivity extends AppCompatActivity {
 
-    private Button btnLogout;
     private BottomNavigationView bottomNavigationView;
-    public static final String TAG = "ProfileActivity";
+    public static final String TAG = "GameListActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_game_list);
 
         // Initialize layout objects -------------------------------
         bottomNavigationView = findViewById(R.id.bottomNavigation);
-        btnLogout = findViewById(R.id.btnLogout);
-
-        //--------------- LOGOUT CLICKED ----------------- //
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, "Log out user");
-                Toast.makeText(ProfileActivity.this, "Logging Out", Toast.LENGTH_SHORT).show();
-                ParseUser.logOut();
-                goLoginActivity();
-            }
-        });
 
         // Button Click Listeners ----------------------------------
         //--------------- NAV BUTTON CLICKED ----------------- //
@@ -47,15 +31,15 @@ public class ProfileActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_home:
-                        Toast.makeText(ProfileActivity.this, "Home!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GameListActivity.this, "Home!", Toast.LENGTH_SHORT).show();
                         goMainActivity();
                         break;
                     case R.id.action_search:
-                        Toast.makeText(ProfileActivity.this, "Search!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GameListActivity.this, "Search!", Toast.LENGTH_SHORT).show();
                         goSearchActivity();
                         break;
                     case R.id.action_profile:
-                        Toast.makeText(ProfileActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GameListActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         break;
@@ -77,8 +61,8 @@ public class ProfileActivity extends AppCompatActivity {
         finish();
     }
 
-    private void goLoginActivity() {
-        Intent i = new Intent(this, LoginActivity.class);
+    private void goProfileActivity() {
+        Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
         finish();
     }

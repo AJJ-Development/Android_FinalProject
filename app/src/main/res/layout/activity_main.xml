@@ -9,16 +9,65 @@
     android:background="@drawable/gradient_background">
 
     <Button
-        android:id="@+id/btnLogout"
+        android:id="@+id/btnTopRated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="159dp"
-        android:layout_marginBottom="109dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginBottom="550dp"
         android:backgroundTint="@color/buttonColor"
-        android:text="Logout" />
+        android:text="Top Rated"
+        android:textSize="17dp" />
+
+    <Button
+        android:id="@+id/btnTrending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="135dp"
+        android:layout_marginBottom="480dp"
+        android:backgroundTint="@color/buttonColor"
+        android:textSize="17dp"
+        android:text="Trending" />
+
+    <Button
+        android:id="@+id/btnNewReleases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="410dp"
+        android:backgroundTint="@color/buttonColor"
+        android:textSize="17dp"
+        android:text="New Releases" />
+
+    <View
+        android:layout_width="411dp"
+        android:layout_height="3dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="100dp"
+        android:background="@android:color/black" />
+
+    <Button
+        android:id="@+id/btnSelectGenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="115dp"
+        android:layout_marginBottom="185dp"
+        android:backgroundTint="@color/buttonColor"
+        android:textSize="17dp"
+        android:text="Select Genre" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"

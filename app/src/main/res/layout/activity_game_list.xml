@@ -7,18 +7,6 @@
     tools:context=".ProfileActivity"
     android:background="@drawable/gradient_background">
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="159dp"
-        android:layout_marginBottom="350dp"
-        android:backgroundTint="@color/buttonColor"
-        android:text="Logout" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
