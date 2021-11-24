@@ -110,6 +110,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         user.setUsername(username);
         user.setPassword(password);
         user.setEmail(email);
+        user.put("name", username);
         user.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {
