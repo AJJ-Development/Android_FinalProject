@@ -27,11 +27,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        /* ----------- Uncomment this when back4app connection made --------------
         if (ParseUser.getCurrentUser() != null) {
             goMainActivity();
         }
-        */
 
         // Initialize layout objects -------------------------------
         etUsername = findViewById(R.id.etUsername);

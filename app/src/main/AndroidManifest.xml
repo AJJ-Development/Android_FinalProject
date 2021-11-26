@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GameHub">
         <activity
+            android:name=".GameListActivity"
+            android:exported="true" />
+        <activity
             android:name=".ProfileActivity"
             android:exported="true" />
         <activity

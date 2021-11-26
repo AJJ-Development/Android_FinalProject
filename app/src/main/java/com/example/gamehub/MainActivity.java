@@ -17,8 +17,10 @@ import com.parse.ParseUser;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
-    private Button btnLogout;
     private BottomNavigationView bottomNavigationView;
+    private Button btnTopRated;
+    private Button btnTrending;
+    private Button btnNewReleases;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,20 +28,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Initialize layout objects -------------------------------
-        btnLogout = findViewById(R.id.btnLogout);
         bottomNavigationView = findViewById(R.id.bottomNavigation);
+        btnTopRated = findViewById(R.id.btnTopRated);
+        btnTrending = findViewById(R.id.btnTrending);
+        btnNewReleases = findViewById(R.id.btnNewReleases);
 
         // Button Click Listeners ----------------------------------
-        //--------------- LOGOUT CLICKED ----------------- //
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, "Log out user");
-                Toast.makeText(MainActivity.this, "Logging Out", Toast.LENGTH_SHORT).show();
-                ParseUser.logOut();
-                goLoginActivity();
-            }
-        });
         //--------------- NAV BUTTON CLICKED ----------------- //
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -62,13 +56,34 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-    }
 
+        //Button Click Listeners -------------------------
+        //-------------------- TOP RATED BUTTON ----------------------//
+        btnTopRated.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick Top Rated Button");
+                goGameListActivity();
+            }
+        });
 
-    private void goLoginActivity() {
-        Intent i = new Intent(this, LoginActivity.class);
-        startActivity(i);
-        finish();
+        //-------------------- TRENDING BUTTON ----------------------//
+        btnTrending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick Trending Button");
+                goGameListActivity();
+            }
+        });
+
+        //-------------------- NEW RELEASES BUTTON ----------------------//
+        btnNewReleases.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick New Releases Button");
+                goGameListActivity();
+            }
+        });
     }
 
     private void goSearchActivity() {
@@ -79,6 +94,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void goProfileActivity() {
         Intent i = new Intent(this, ProfileActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    private void goGameListActivity() {
+        Intent i = new Intent(this, GameListActivity.class);
         startActivity(i);
         finish();
     }
