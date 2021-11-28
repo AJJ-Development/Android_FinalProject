@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +33,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         // Initialize Layout Objects -------------------------------
         etUsername = findViewById(R.id.etUsernameCA);
+        etUsername.setFilters(new InputFilter[]{ new InputFilter.LengthFilter(14) });
         etPassword = findViewById(R.id.etPasswordCA);
         etPasswordVerify = findViewById(R.id.etPasswordVerifyCA);
         etEmail = findViewById(R.id.etEmailCA);

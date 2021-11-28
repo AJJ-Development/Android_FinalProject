@@ -31,10 +31,12 @@
         android:layout_marginEnd="50dp"
         android:ems="10"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColorHint="#D8A7A7A7"
         android:hint="Username"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textCursorDrawable="@drawable/cursor"
+        android:backgroundTint="#000000"/>
 
     <EditText
         android:id="@+id/etPasswordCA"
@@ -46,11 +48,13 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColorHint="#D8A7A7A7"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textCursorDrawable="@drawable/cursor"
+        android:backgroundTint="#000000"/>
 
     <Button
         android:id="@+id/btnLoginCA"
@@ -74,11 +78,13 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColorHint="#D8A7A7A7"
         android:ems="10"
         android:hint="Retype Password"
         android:inputType="textPassword"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textCursorDrawable="@drawable/cursor"
+        android:backgroundTint="#000000"/>
 
     <EditText
         android:id="@+id/etEmailCA"
@@ -90,11 +96,13 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColorHint="#D8A7A7A7"
         android:ems="10"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textCursorDrawable="@drawable/cursor"
+        android:backgroundTint="#000000"/>
 
     <TextView
         android:id="@+id/tvTitle"

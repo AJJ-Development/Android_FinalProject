@@ -74,13 +74,15 @@
         android:layout_below="@+id/tvProfileEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
-        android:backgroundTint="#000000"
         android:ems="10"
         android:hint="New Nickname"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAlignment="center"
-        android:textCursorDrawable="@drawable/cursor"/>
+        android:textColor="@color/white"
+        android:textColorHint="#D8A7A7A7"
+        android:textCursorDrawable="@drawable/cursor"
+        android:backgroundTint="#000000"/>
 
     <Button
         android:id="@+id/btnSetNewNickname"
