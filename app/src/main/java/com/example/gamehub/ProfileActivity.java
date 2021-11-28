@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,6 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
         tvProfileEmail = findViewById(R.id.tvProfileEmail);
         tvProfileEmail.setText(currentUser.get("email").toString());
         etNewNickname = findViewById(R.id.etNewNickname);
+        etNewNickname.setFilters(new InputFilter[]{ new InputFilter.LengthFilter(10) });
         btnSetNewNickname = findViewById(R.id.btnSetNewNickname);
 
         // Button Click Listeners ----------------------------------
@@ -71,6 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
                     currentUser.saveInBackground(e -> {
                         if (e == null) {
                             setProfileNickname();
+                            etNewNickname.setText("");
                         } else {
                             Log.i(TAG, "Error", e);
                         }
