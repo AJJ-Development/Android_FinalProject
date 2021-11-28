@@ -33,9 +33,9 @@ This app allows for video game users to view the all their video games. They wil
     - [ ] Ability to like the game
     - [ ] Show game description
     - [ ] Send user to buy page if they choose to buy
-- [ ] User profile page
-    - [ ] Can view who is signed in as well as displays temporary profile picture
-    - [ ] User can sign out
+- [X] User profile page
+    - [X] Can view who is signed in as well as displays temporary profile picture
+    - [X] User can sign out
 - [ ] Search for games
 - [ ] User can find games by genre, top tending, new releases, etc.
 - [ ] Display a list of games with game title, image, and short description of game
