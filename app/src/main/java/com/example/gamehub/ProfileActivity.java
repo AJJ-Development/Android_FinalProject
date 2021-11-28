@@ -9,18 +9,25 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
 
+import java.util.Locale;
+
 public class ProfileActivity extends AppCompatActivity {
 
     public static final String TAG = "ProfileActivity";
     private Button btnLogout;
     private BottomNavigationView bottomNavigationView;
-    private TextView tvProfileUsername;
+    private TextView tvProfileNickname;
+    private TextView tvProfileEmail;
+    private EditText etNewNickname;
+    private Button btnSetNewNickname;
+    private ParseUser currentUser = ParseUser.getCurrentUser();
 
 
     @Override
@@ -31,7 +38,14 @@ public class ProfileActivity extends AppCompatActivity {
         // Initialize layout objects -------------------------------
         bottomNavigationView = findViewById(R.id.bottomNavigation);
         btnLogout = findViewById(R.id.btnLogout);
-        tvProfileUsername = findViewById(R.id.tvProfileUsername);
+        tvProfileNickname = findViewById(R.id.tvProfileNickname);
+        setProfileNickname();
+        tvProfileEmail = findViewById(R.id.tvProfileEmail);
+        tvProfileEmail.setText(currentUser.get("email").toString());
+        etNewNickname = findViewById(R.id.etNewNickname);
+        btnSetNewNickname = findViewById(R.id.btnSetNewNickname);
+
+        // Button Click Listeners ----------------------------------
 
         //--------------- LOGOUT CLICKED ----------------- //
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +58,27 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        // Button Click Listeners ----------------------------------
+        //--------------- SET NEW USERNAME CLICKED ----------------- //
+        btnSetNewNickname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newUsername = etNewNickname.getText().toString();
+                if (newUsername.equals("")) {
+                    Toast.makeText(ProfileActivity.this, "Enter new name", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    currentUser.put("name", newUsername);
+                    currentUser.saveInBackground(e -> {
+                        if (e == null) {
+                            setProfileNickname();
+                        } else {
+                            Log.i(TAG, "Error", e);
+                        }
+                    });
+                }
+            }
+        });
+
         //--------------- NAV BUTTON CLICKED ----------------- //
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -67,6 +101,11 @@ public class ProfileActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    // Set Profile nickname - Function so it can be recalled/refreshed
+    private void setProfileNickname() {
+        tvProfileNickname.setText(currentUser.get("name").toString().toUpperCase(Locale.ROOT));
     }
 
     private void goSearchActivity() {
