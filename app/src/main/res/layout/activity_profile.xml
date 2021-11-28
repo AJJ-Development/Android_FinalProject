@@ -14,8 +14,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="159dp"
-        android:layout_marginBottom="350dp"
+        android:layout_marginEnd="158dp"
+        android:layout_marginBottom="111dp"
         android:backgroundTint="@color/buttonColor"
         android:text="Logout" />
 
@@ -30,4 +30,41 @@
         android:alpha="0.7"
         android:background="@color/grey"
         />
+
+    <TextView
+        android:id="@+id/tvProfileTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="PROFILE"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp" />
+
+    <ImageView
+        android:id="@+id/ivProfilePic"
+        android:layout_width="163dp"
+        android:layout_height="156dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="134dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/spaceman"
+        tools:srcCompat="@drawable/spaceman" />
+
+    <TextView
+        android:id="@+id/tvProfileUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="166dp"
+        android:layout_toEndOf="@+id/ivProfilePic"
+        android:text="username"
+        android:textColor="#EBEBEB"
+        android:textSize="20sp"
+        tools:text="username" />
 </RelativeLayout>

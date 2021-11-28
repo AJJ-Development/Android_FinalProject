@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -16,9 +17,11 @@ import com.parse.ParseUser;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    public static final String TAG = "ProfileActivity";
     private Button btnLogout;
     private BottomNavigationView bottomNavigationView;
-    public static final String TAG = "ProfileActivity";
+    private TextView tvProfileUsername;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
         // Initialize layout objects -------------------------------
         bottomNavigationView = findViewById(R.id.bottomNavigation);
         btnLogout = findViewById(R.id.btnLogout);
+        tvProfileUsername = findViewById(R.id.tvProfileUsername);
 
         //--------------- LOGOUT CLICKED ----------------- //
         btnLogout.setOnClickListener(new View.OnClickListener() {
