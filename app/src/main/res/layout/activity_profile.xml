@@ -11,11 +11,9 @@
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="158dp"
-        android:layout_marginBottom="111dp"
+        android:layout_marginBottom="104dp"
         android:backgroundTint="@color/buttonColor"
         android:text="Logout" />
 
@@ -31,40 +29,64 @@
         android:background="@color/grey"
         />
 
-    <TextView
-        android:id="@+id/tvProfileTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
-        android:text="PROFILE"
-        android:textColor="#FFFFFF"
-        android:textSize="32sp" />
-
     <ImageView
         android:id="@+id/ivProfilePic"
-        android:layout_width="163dp"
-        android:layout_height="156dp"
+        android:layout_width="216dp"
+        android:layout_height="204dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="134dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="126dp"
         android:adjustViewBounds="false"
         android:cropToPadding="false"
         app:srcCompat="@drawable/spaceman"
         tools:srcCompat="@drawable/spaceman" />
 
     <TextView
-        android:id="@+id/tvProfileUsername"
+        android:id="@+id/tvProfileNickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="166dp"
-        android:layout_toEndOf="@+id/ivProfilePic"
-        android:text="username"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
         android:textColor="#EBEBEB"
-        android:textSize="20sp"
-        tools:text="username" />
+        android:textSize="36sp"
+        tools:text="nickname" />
+
+    <TextView
+        android:id="@+id/tvProfileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivProfilePic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="0dp"
+        android:text="email"
+        android:textColor="#FFFFFF"
+        android:textSize="26sp"
+        tools:text="email" />
+
+    <EditText
+        android:id="@+id/etNewNickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProfileEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:ems="10"
+        android:hint="New Nickname"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/btnSetNewNickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etNewNickname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/buttonColor"
+        android:text="set new nickname" />
 </RelativeLayout>
