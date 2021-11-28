@@ -44,7 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
         tvProfileEmail = findViewById(R.id.tvProfileEmail);
         tvProfileEmail.setText(currentUser.get("email").toString());
         etNewNickname = findViewById(R.id.etNewNickname);
-        etNewNickname.setFilters(new InputFilter[]{ new InputFilter.LengthFilter(10) });
+        etNewNickname.setFilters(new InputFilter[]{ new InputFilter.LengthFilter(14) });
         btnSetNewNickname = findViewById(R.id.btnSetNewNickname);
 
         // Button Click Listeners ----------------------------------
