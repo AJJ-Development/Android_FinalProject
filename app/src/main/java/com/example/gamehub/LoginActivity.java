@@ -94,12 +94,16 @@ public class LoginActivity extends AppCompatActivity {
 
     private void goMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
+        overridePendingTransition(0, 0);
+        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
         finish();
     }
 
     private void goCreateAccountActivity() {
         Intent i = new Intent(this, CreateAccountActivity.class);
+        overridePendingTransition(0, 0);
+        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 }

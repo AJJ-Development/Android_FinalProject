@@ -130,11 +130,15 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private void goLoginActivity() {
         Intent i = new Intent(this, LoginActivity.class);
+        overridePendingTransition(0, 0);
+        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
     private void goMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
+        overridePendingTransition(0, 0);
+        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
         finish();
     }
