@@ -11,7 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.example.gamehub.Game;
+import com.example.gamehub.GameListActivity;
 import com.example.gamehub.R;
+import com.parse.ParseFile;
 
 import java.util.List;
 
@@ -20,7 +24,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     Context context;
     List<Game> games;
 
-    public GameAdapter(Context context, List<Game> games) {
+    public GameAdapter(GameListActivity context, List<Game> games) {
         this.context = context;
         this.games = games;
     }
@@ -61,9 +65,12 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         }
 
         public void bind(Game game) {
-            tvGameTitle.setText(game.getTitle());
-            tvGameDesc.setText(game.getOverview());
-            Glide.with(context).load(game.getPosterPath()).into(ivGamePoster);
+            tvGameTitle.setText(game.getKeyName());
+            tvGameDesc.setText(game.getKeyDesc());
+            ParseFile image = game.getKeyImage();
+            if (image != null) {
+                Glide.with(context).load(image.getUrl()).apply(new RequestOptions().override(1000, 500)).into(ivGamePoster);
+            }
         }
     }
 }

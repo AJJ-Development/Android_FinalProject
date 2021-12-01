@@ -13,14 +13,6 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import com.parse.ParseUser;
-
-import java.util.List;
-
-import proto.Game;
-import proto.GameResult;
-import proto.Search;
-
 
 public class MainActivity extends AppCompatActivity {
 

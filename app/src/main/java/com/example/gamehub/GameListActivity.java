@@ -50,7 +50,7 @@ public class GameListActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String btnClicked = extras.getString("type");
-        queryGames(btnClicked);
+        queryGames(btnClicked, gameAdapter);
 
 
         // Initialize layout objects -------------------------------
@@ -100,22 +100,19 @@ public class GameListActivity extends AppCompatActivity {
         finish();
     }
 
-    private void queryGames(String btnClicked) {
+    private void queryGames(String btnClicked, GameAdapter adapter) {
         ParseQuery<Game> query = ParseQuery.getQuery(Game.class);
         query.whereEqualTo(btnClicked, true);
         query.setLimit(20);
         query.addDescendingOrder(Game.KEY_CREATED_AT);
         query.findInBackground(new FindCallback<Game>() {
             @Override
-            public void done(List<Game> games, ParseException e) {
+            public void done(List<Game> gamesList, ParseException e) {
                 if (e != null) {
                     Log.e(TAG, "Issue getting games", e);
                 }
-                for (Game game : games) {
-                    Log.i(TAG, "Game: " + game.getKeyName() + ", description: " + game.getKeyDesc());
-
-                    // TODO: Notify adapter of data change and populate recycler view with data
-                }
+                games.addAll(gamesList);
+                adapter.notifyDataSetChanged();
             }
         });
     }
