@@ -13,6 +13,15 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import com.parse.ParseUser;
+
+import java.util.List;
+
+import proto.Game;
+import proto.GameResult;
+import proto.Search;
+
+
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
@@ -25,6 +34,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*IGDBWrapper wrapper = IGDBWrapper.INSTANCE;
+        wrapper.setCredentials("s5co5sej9ddx485f36bovcuiku3v5a", "4svc3xcddy9obdxyfbs05ny4mupdrn");
+        APICalypse apicalypse = new APICalypse().fields("*").sort("release_dates.date", Sort.DESCENDING);
+        try{
+            List<Game> games = ProtoRequestKt.games(wrapper, apicalypse);
+            Log.i(TAG, "games: " + games);
+        } catch(RequestException e) {
+            Log.e(TAG, "games: " + e.getMessage());
+        }*/
+
+//        byte[] bytes = new byte[0];
+//        try {
+//            bytes = wrapper.apiProtoRequest(Endpoints.GAMES, "fields *;");
+//        } catch (RequestException e) {
+//            e.printStackTrace();
+//        }
+//        List<Game> listOfGames = GameResult.parseFrom(bytes).getGamesList();
+//
+//        for (Game i : listOfGames) {
+//            Log.i(TAG, "game: " + i);
+//        }
+
 
         // Initialize layout objects -------------------------------
         bottomNavigationView = findViewById(R.id.bottomNavigation);
