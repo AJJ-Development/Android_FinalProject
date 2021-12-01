@@ -15,6 +15,8 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class GameListActivity extends AppCompatActivity {
@@ -26,8 +28,9 @@ public class GameListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_list);
-        Log.i(TAG, "Creating GameListActivity");
-        queryGames();
+        Bundle extras = getIntent().getExtras();
+        String btnClicked = extras.getString("type");
+        queryGames(btnClicked);
 
         // Initialize layout objects -------------------------------
         bottomNavigationView = findViewById(R.id.bottomNavigation);
@@ -76,8 +79,9 @@ public class GameListActivity extends AppCompatActivity {
         finish();
     }
 
-    private void queryGames() {
+    private void queryGames(String btnClicked) {
         ParseQuery<Game> query = ParseQuery.getQuery(Game.class);
+        query.whereEqualTo(btnClicked, true);
         query.setLimit(20);
         query.addDescendingOrder(Game.KEY_CREATED_AT);
         query.findInBackground(new FindCallback<Game>() {
