@@ -30,8 +30,8 @@ public class Game extends ParseObject {
         return getString(KEY_DESC);
     }
 
-    public String getKeyRating() {
-        return getString(KEY_RATING);
+    public double getKeyRating() {
+        return getDouble(KEY_RATING);
     }
 
     public ParseFile getKeyImage() {
