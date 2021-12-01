@@ -11,13 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.api.igdb.apicalypse.APICalypse;
-import com.api.igdb.apicalypse.Sort;
-import com.api.igdb.exceptions.RequestException;
-import com.api.igdb.request.IGDBWrapper;
-import com.api.igdb.request.ProtoRequestKt;
-import com.api.igdb.utils.Endpoints;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import com.parse.ParseUser;
 
 import java.util.List;
@@ -25,6 +20,7 @@ import java.util.List;
 import proto.Game;
 import proto.GameResult;
 import proto.Search;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -98,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick Top Rated Button");
-                goGameListActivity();
+                goGameListActivity("top_rated");
             }
         });
 
@@ -107,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick Trending Button");
-                goGameListActivity();
+                goGameListActivity("trending");
             }
         });
 
@@ -116,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick New Releases Button");
-                goGameListActivity();
+                goGameListActivity("new_release");
             }
         });
     }
@@ -133,8 +129,9 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private void goGameListActivity() {
+    private void goGameListActivity(String type) {
         Intent i = new Intent(this, GameListActivity.class);
+        i.putExtra("type", type);
         startActivity(i);
         finish();
     }

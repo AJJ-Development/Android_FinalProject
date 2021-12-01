@@ -7,12 +7,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.gamehub.adapters.GameAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import java.util.ArrayList;
 
@@ -27,6 +35,7 @@ public class GameListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_list);
+
         RecyclerView rvGames = findViewById(R.id.rvGames);
         games = new ArrayList<>();
 
@@ -38,6 +47,11 @@ public class GameListActivity extends AppCompatActivity {
 
         //Set a Layout Manager on the recycler view
         rvGames.setLayoutManager(new LinearLayoutManager(this));
+
+        Bundle extras = getIntent().getExtras();
+        String btnClicked = extras.getString("type");
+        queryGames(btnClicked);
+
 
         // Initialize layout objects -------------------------------
         bottomNavigationView = findViewById(R.id.bottomNavigation);
@@ -84,5 +98,25 @@ public class GameListActivity extends AppCompatActivity {
         Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
         finish();
+    }
+
+    private void queryGames(String btnClicked) {
+        ParseQuery<Game> query = ParseQuery.getQuery(Game.class);
+        query.whereEqualTo(btnClicked, true);
+        query.setLimit(20);
+        query.addDescendingOrder(Game.KEY_CREATED_AT);
+        query.findInBackground(new FindCallback<Game>() {
+            @Override
+            public void done(List<Game> games, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue getting games", e);
+                }
+                for (Game game : games) {
+                    Log.i(TAG, "Game: " + game.getKeyName() + ", description: " + game.getKeyDesc());
+
+                    // TODO: Notify adapter of data change and populate recycler view with data
+                }
+            }
+        });
     }
 }
