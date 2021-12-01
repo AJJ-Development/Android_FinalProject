@@ -2,6 +2,8 @@ package com.example.gamehub;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,17 +11,33 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.gamehub.adapters.GameAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class GameListActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     public static final String TAG = "GameListActivity";
 
+    List<Game> games;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_list);
+        RecyclerView rvGames = findViewById(R.id.rvGames);
+        games = new ArrayList<>();
+
+        //Create the adapter
+        GameAdapter gameAdapter = new GameAdapter(this, games);
+
+        //Set the adapter on the recycler view
+        rvGames.setAdapter(gameAdapter);
+
+        //Set a Layout Manager on the recycler view
+        rvGames.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize layout objects -------------------------------
         bottomNavigationView = findViewById(R.id.bottomNavigation);

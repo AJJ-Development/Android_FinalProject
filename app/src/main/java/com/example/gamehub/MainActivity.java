@@ -24,6 +24,7 @@ import java.util.List;
 
 import proto.Game;
 import proto.GameResult;
+import proto.Search;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,16 +39,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        IGDBWrapper wrapper = IGDBWrapper.INSTANCE;
-        wrapper.setCredentials("tdwium5zu2nu08w9y887u5x74t6wh5", "Bearer lgs0h22z8l2u2ior4w54ne0617n8ap");
-        APICalypse apicalypse = new APICalypse().fields("*")
-                .sort("release_dates.date", Sort.DESCENDING).where("themes != 42");
+        /*IGDBWrapper wrapper = IGDBWrapper.INSTANCE;
+        wrapper.setCredentials("s5co5sej9ddx485f36bovcuiku3v5a", "4svc3xcddy9obdxyfbs05ny4mupdrn");
+        APICalypse apicalypse = new APICalypse().fields("*").sort("release_dates.date", Sort.DESCENDING);
         try{
             List<Game> games = ProtoRequestKt.games(wrapper, apicalypse);
-            Log.i(TAG, "games: LETSFUCKINGGOOOOOOOOOOO");
+            Log.i(TAG, "games: " + games);
         } catch(RequestException e) {
             Log.e(TAG, "games: " + e.getMessage());
-        }
+        }*/
 
 //        byte[] bytes = new byte[0];
 //        try {
