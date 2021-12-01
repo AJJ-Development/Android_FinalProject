@@ -5,6 +5,9 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @ParseClassName("Game")
 public class Game extends ParseObject {
 
@@ -12,9 +15,6 @@ public class Game extends ParseObject {
     public static final String KEY_DESC = "description";
     public static final String KEY_RATING = "rating";
     public static final String KEY_IMAGE = "image";
-    public static final String KEY_TRENDING = "trending";
-    public static final String KEY_TOP_RATED = "top_rated";
-    public static final String KEY_NEW_RELEASE = "new_release";
 
     public String getKeyName() {
         return getString(KEY_NAME);
@@ -31,10 +31,4 @@ public class Game extends ParseObject {
     public ParseFile getKeyImage() {
         return getParseFile(KEY_IMAGE);
     }
-
-    public boolean getKeyTrending() { return getBoolean(KEY_TRENDING); }
-
-    public boolean getKeyTopRated() { return getBoolean(KEY_TOP_RATED); }
-
-    public boolean getKeyNewRelease() { return getBoolean(KEY_NEW_RELEASE); }
 }
