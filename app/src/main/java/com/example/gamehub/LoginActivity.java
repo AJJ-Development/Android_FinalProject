@@ -72,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // TODO: Write logic for Login User with backend Parse
     private void loginUser(String username, String password) {
         Log.i(TAG, "Logging user in -- Username: " + username + " Password: " + password);
 

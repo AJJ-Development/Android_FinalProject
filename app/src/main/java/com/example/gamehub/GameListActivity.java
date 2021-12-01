@@ -5,11 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+
+import java.util.List;
 
 public class GameListActivity extends AppCompatActivity {
 
@@ -20,6 +26,8 @@ public class GameListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_list);
+        Log.i(TAG, "Creating GameListActivity");
+        queryGames();
 
         // Initialize layout objects -------------------------------
         bottomNavigationView = findViewById(R.id.bottomNavigation);
@@ -66,5 +74,24 @@ public class GameListActivity extends AppCompatActivity {
         Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
         finish();
+    }
+
+    private void queryGames() {
+        ParseQuery<Game> query = ParseQuery.getQuery(Game.class);
+        query.setLimit(20);
+        query.addDescendingOrder(Game.KEY_CREATED_AT);
+        query.findInBackground(new FindCallback<Game>() {
+            @Override
+            public void done(List<Game> games, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue getting games", e);
+                }
+                for (Game game : games) {
+                    Log.i(TAG, "Game: " + game.getKeyName() + ", description: " + game.getKeyDesc());
+
+                    // TODO: Notify adapter of data change and populate recycler view with data
+                }
+            }
+        });
     }
 }
