@@ -62,15 +62,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.action_home:
-                        Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_SHORT).show();
-                        break;
                     case R.id.action_search:
-                        Toast.makeText(MainActivity.this, "Search!", Toast.LENGTH_SHORT).show();
                         goSearchActivity();
                         break;
                     case R.id.action_profile:
-                        Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
                         goProfileActivity();
                         break;
                     default:

@@ -63,15 +63,12 @@ public class GameListActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_home:
-                        Toast.makeText(GameListActivity.this, "Home!", Toast.LENGTH_SHORT).show();
                         goMainActivity();
                         break;
                     case R.id.action_search:
-                        Toast.makeText(GameListActivity.this, "Search!", Toast.LENGTH_SHORT).show();
                         goSearchActivity();
                         break;
                     case R.id.action_profile:
-                        Toast.makeText(GameListActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
                         goProfileActivity();
                         break;
                     default:
