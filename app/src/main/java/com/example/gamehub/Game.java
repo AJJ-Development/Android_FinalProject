@@ -5,11 +5,17 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @ParseClassName("Game")
 public class Game extends ParseObject {
+
+    public Game() {
+
+    }
 
     public static final String KEY_NAME = "name";
     public static final String KEY_DESC = "description";

@@ -88,15 +88,10 @@ public class ProfileActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_home:
-                        Toast.makeText(ProfileActivity.this, "Home!", Toast.LENGTH_SHORT).show();
                         goMainActivity();
                         break;
                     case R.id.action_search:
-                        Toast.makeText(ProfileActivity.this, "Search!", Toast.LENGTH_SHORT).show();
                         goSearchActivity();
-                        break;
-                    case R.id.action_profile:
-                        Toast.makeText(ProfileActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         break;
