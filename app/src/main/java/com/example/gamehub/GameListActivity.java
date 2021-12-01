@@ -40,6 +40,7 @@ public class GameListActivity extends AppCompatActivity {
                         break;
                     case R.id.action_profile:
                         Toast.makeText(GameListActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
+                        goProfileActivity();
                         break;
                     default:
                         break;
