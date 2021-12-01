@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick Top Rated Button");
-                goGameListActivity();
+                goGameListActivity("top_rated");
             }
         });
 
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick Trending Button");
-                goGameListActivity();
+                goGameListActivity("trending");
             }
         });
 
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick New Releases Button");
-                goGameListActivity();
+                goGameListActivity("new_release");
             }
         });
     }
@@ -97,8 +97,9 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private void goGameListActivity() {
+    private void goGameListActivity(String type) {
         Intent i = new Intent(this, GameListActivity.class);
+        i.putExtra("type", type);
         startActivity(i);
         finish();
     }
