@@ -12,7 +12,10 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.ParseFile;
 
 import org.parceler.Parcels;
 
@@ -40,10 +43,11 @@ public class DetailAcitvity extends AppCompatActivity {
 
         tvDetGameTitle.setText(game.getKeyName());
         tvDetGameDesc.setText(game.getKeyDesc());
-        //ivGameImage.setImageIcon(game.getKeyImage());
-        //ratingBar.setRating(Float.parseFloat(rating));
-        //THIS TOAST PROVES THAT THE RATING IS NULL
-        Toast.makeText(DetailAcitvity.this, game.getKeyRating(), Toast.LENGTH_SHORT).show();
+        ParseFile image = game.getKeyImage();
+        if (image != null) {
+            Glide.with(DetailAcitvity.this).load(image.getUrl()).apply(new RequestOptions().override(1000, 500)).into(ivGameImage);
+        }
+        ratingBar.setRating((float) game.getKeyRating());
 
         // Initialize layout objects -------------------------------
         bottomNavigationView = findViewById(R.id.bottomNavigation);
