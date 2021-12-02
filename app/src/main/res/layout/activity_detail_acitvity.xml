@@ -53,7 +53,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="271dp"
         android:isIndicator="true"
-        android:numStars="10"
+        android:numStars="5"
         android:rating="2.5" />
 
     <ImageView
