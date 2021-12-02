@@ -5,6 +5,9 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.parceler.Parcel;
 
 import java.util.ArrayList;
@@ -13,8 +16,27 @@ import java.util.List;
 @ParseClassName("Game")
 public class Game extends ParseObject {
 
-    public Game() {
+    String image;
+    String title;
+    String overview;
+    String slug;
+    //float rating;
 
+    public Game(JSONObject jsonObject) throws JSONException {
+        image = jsonObject.getString("background_image");
+        title = jsonObject.getString("name");
+        slug = jsonObject.getString("slug");
+        //overview = jsonObject.getString("overview");
+        overview = "This is some test data This is some test data This is some test data This is some test dataThis is some test dataThis is some test dataThis is some test dataThis is some test dataThis is some test data";
+        //rating = (float)jsonObject.getDouble("rating");
+    }
+
+    public static List<Game> fromJsonArray(JSONArray gameJsonArray) throws JSONException {
+        List<Game> movies = new ArrayList<>();
+        for( int i = 0; i < gameJsonArray.length(); i++) {
+            movies.add(new Game(gameJsonArray.getJSONObject(i)));
+        }
+        return movies;
     }
 
     public static final String KEY_NAME = "name";
