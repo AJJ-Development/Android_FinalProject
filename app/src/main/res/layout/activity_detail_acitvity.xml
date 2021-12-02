@@ -17,6 +17,19 @@
         app:itemTextColor="@drawable/statelistdrawable"
         app:menu="@menu/menu_bottom_navigation" />
 
+    <Button
+        android:id="@+id/btnLikeGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="137dp"
+        android:layout_marginBottom="408dp"
+        android:backgroundTint="@color/buttonColor"
+        android:text="Like Game"
+        android:textSize="17dp" />
+
     <TextView
         android:id="@+id/tvDetGameDesc"
         android:layout_width="306dp"
@@ -24,12 +37,24 @@
         android:layout_below="@+id/ratingBar"
         android:layout_alignParentStart="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="55dp"
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="20sp"
         tools:text="This is a first-person shooting game where players join forces against aliens. This gamer takes place in the 20th century." />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDetGameTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="271dp"
+        android:isIndicator="true"
+        android:numStars="10"
+        android:rating="2.5" />
 
     <ImageView
         android:id="@+id/ivGameImage"
@@ -41,18 +66,6 @@
         android:layout_marginStart="112dp"
         android:layout_marginTop="15dp"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        style="@style/Widget.AppCompat.RatingBar.Indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDetGameTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="215dp"
-        android:isIndicator="true"
-        android:numStars="10"
-        android:rating="2.5" />
 
     <TextView
         android:id="@+id/tvDetGameTitle"
