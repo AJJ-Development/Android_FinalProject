@@ -19,6 +19,7 @@ import com.example.gamehub.DetailAcitvity;
 import com.example.gamehub.Game;
 import com.example.gamehub.GameListActivity;
 import com.example.gamehub.R;
+import com.example.gamehub.SearchActivity;
 import com.parse.ParseFile;
 
 import org.parceler.Parcels;
@@ -31,6 +32,11 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     List<Game> games;
 
     public GameAdapter(GameListActivity context, List<Game> games) {
+        this.context = context;
+        this.games = games;
+    }
+
+    public GameAdapter(SearchActivity context, List<Game> games) {
         this.context = context;
         this.games = games;
     }
