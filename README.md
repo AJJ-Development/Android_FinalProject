@@ -27,18 +27,16 @@ This app allows for video game users to view the all their video games. They wil
 **Required Must-have Stories**
 
 - [X]  Account creation/login
-- [ ]  Timeline (games)
-- [ ]  Details page for each game
-    - [ ]  Display game image and title
-    - [ ] Ability to like the game
-    - [ ] Show game description
-    - [ ] Send user to buy page if they choose to buy
+- [X]  Timeline (games)
+- [X]  Details page for each game
+    - [X]  Display game image and title
+    - [X] Show game description
 - [X] User profile page
     - [X] Can view who is signed in as well as displays temporary profile picture
     - [X] User can sign out
 - [ ] Search for games
-- [ ] User can find games by genre, top tending, new releases, etc.
-- [ ] Display a list of games with game title, image, and short description of game
+- [X] User can find games by genre, top tending, new releases, etc.
+- [X] Display a list of games with game title, image, and short description of game
 
 **Optional Nice-to-have Stories**
 
@@ -214,3 +212,6 @@ This app allows for video game users to view the all their video games. They wil
 
 ## Sprint 1
 <img src="Sprint1.gif" width=350>
+
+## Sprint 2
+<img src="Sprint2.gif" width=350>
