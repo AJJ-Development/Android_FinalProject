@@ -28,6 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView tvProfileEmail;
     private EditText etNewNickname;
     private Button btnSetNewNickname;
+    private Button btnLikedGames;
     private ParseUser currentUser = ParseUser.getCurrentUser();
 
 
@@ -46,6 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
         etNewNickname = findViewById(R.id.etNewNickname);
         etNewNickname.setFilters(new InputFilter[]{ new InputFilter.LengthFilter(14) });
         btnSetNewNickname = findViewById(R.id.btnSetNewNickname);
+        btnLikedGames = findViewById(R.id.btnLikedGames);
 
         // Button Click Listeners ----------------------------------
 
@@ -57,6 +59,14 @@ public class ProfileActivity extends AppCompatActivity {
                 Toast.makeText(ProfileActivity.this, "Logging Out", Toast.LENGTH_SHORT).show();
                 ParseUser.logOut();
                 goLoginActivity();
+            }
+        });
+
+        //-------------- VIEW LIKED GAMES CLICKED ------------------ //
+        btnLikedGames.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goGameListActivity("liked_games");
             }
         });
 
@@ -120,6 +130,13 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void goLoginActivity() {
         Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    private void goGameListActivity(String type) {
+        Intent i = new Intent(this, GameListActivity.class);
+        i.putExtra("type", type);
         startActivity(i);
         finish();
     }
