@@ -13,22 +13,26 @@ import org.parceler.Parcel;
 import java.util.ArrayList;
 import java.util.List;
 
-@ParseClassName("Game")
-public class Game extends ParseObject {
+@Parcel
+public class Game {
 
-    String image;
+    String gameId;
     String title;
     String overview;
+    String image;
     String slug;
-    //float rating;
+    float rating;
+
+    public Game() {}
 
     public Game(JSONObject jsonObject) throws JSONException {
-        image = jsonObject.getString("background_image");
+        gameId = jsonObject.getString("id");
         title = jsonObject.getString("name");
+        image = jsonObject.getString("background_image");
         slug = jsonObject.getString("slug");
         //overview = jsonObject.getString("overview");
         overview = "This is some test data This is some test data This is some test data This is some test dataThis is some test dataThis is some test dataThis is some test dataThis is some test dataThis is some test data";
-        //rating = (float)jsonObject.getDouble("rating");
+        rating = (float)jsonObject.getDouble("rating");
     }
 
     public static List<Game> fromJsonArray(JSONArray gameJsonArray) throws JSONException {
@@ -39,24 +43,48 @@ public class Game extends ParseObject {
         return movies;
     }
 
-    public static final String KEY_NAME = "name";
-    public static final String KEY_DESC = "description";
-    public static final String KEY_RATING = "rating";
-    public static final String KEY_IMAGE = "image";
-
-    public String getKeyName() {
-        return getString(KEY_NAME);
+    public String getGameId() {
+        return gameId;
     }
 
-    public String getKeyDesc() {
-        return getString(KEY_DESC);
+    public String getTitle() {
+        return title;
     }
 
-    public double getKeyRating() {
-        return getDouble(KEY_RATING);
+    public String getOverview() {
+        return overview;
     }
 
-    public ParseFile getKeyImage() {
-        return getParseFile(KEY_IMAGE);
+    public String getImage() {
+        return image;
     }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+//    public static final String KEY_NAME = "name";
+//    public static final String KEY_DESC = "description";
+//    public static final String KEY_RATING = "rating";
+//    public static final String KEY_IMAGE = "image";
+//
+//    public String getKeyName() {
+//        return getString(KEY_NAME);
+//    }
+//
+//    public String getKeyDesc() {
+//        return getString(KEY_DESC);
+//    }
+//
+//    public double getKeyRating() {
+//        return getDouble(KEY_RATING);
+//    }
+//
+//    public ParseFile getKeyImage() {
+//        return getParseFile(KEY_IMAGE);
+//    }
 }

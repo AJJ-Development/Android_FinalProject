@@ -8,19 +8,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.gamehub.DetailAcitvity;
+import com.example.gamehub.DetailActivity;
 import com.example.gamehub.Game;
 import com.example.gamehub.GameListActivity;
 import com.example.gamehub.R;
 import com.example.gamehub.SearchActivity;
-import com.parse.ParseFile;
 
 import org.parceler.Parcels;
 
@@ -63,6 +61,16 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         return games.size();
     }
 
+    public void clear() {
+        games.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<Game> gameList) {
+        games.addAll(gameList);
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         RelativeLayout container;
@@ -79,19 +87,16 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         }
 
         public void bind(Game game) {
-            tvGameTitle.setText(game.getKeyName());
-            tvGameDesc.setText(game.getKeyDesc());
-            ParseFile image = game.getKeyImage();
-            if (image != null) {
-                Glide.with(context).load(image.getUrl()).apply(new RequestOptions().override(1000, 500)).into(ivGamePoster);
-            }
+            tvGameTitle.setText(game.getTitle());
+            tvGameDesc.setText(game.getOverview());
+            Glide.with(context).load(game.getImage()).apply(new RequestOptions().override(1000, 500)).into(ivGamePoster);
 
             // 1. Register click listener on whole row
             container.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     // 2. Navigate to a new activity on tap
-                    Intent i = new Intent(context, DetailAcitvity.class);
+                    Intent i = new Intent(context, DetailActivity.class);
                     i.putExtra("game", Parcels.wrap(game));
                     context.startActivity(i);
                 }
