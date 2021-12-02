@@ -13,7 +13,7 @@ public class ParseApplication extends Application {
         super.onCreate();
 
         // Register your parse models
-        ParseObject.registerSubclass(Game.class);
+        //ParseObject.registerSubclass(Game.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("BPU2bc1tb51POhBMYhTCBATyJwik9Xj08EGLKAmA")
