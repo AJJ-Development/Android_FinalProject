@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gamehub.adapters.GameAdapter;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 public class GameListActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
+    private TextView tvListTitle;
     public static final String TAG = "GameListActivity";
 
     List<Game> games;
@@ -38,6 +40,7 @@ public class GameListActivity extends AppCompatActivity {
 
         RecyclerView rvGames = findViewById(R.id.rvGames);
         games = new ArrayList<>();
+        tvListTitle = findViewById(R.id.tvListTitle);
 
         //Create the adapter
         GameAdapter gameAdapter = new GameAdapter(this, games);
@@ -51,6 +54,7 @@ public class GameListActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String btnClicked = extras.getString("type");
         queryGames(btnClicked, gameAdapter);
+        tvListTitle.setText(btnClicked.toUpperCase().replace("_", " "));
 
 
         // Initialize layout objects -------------------------------

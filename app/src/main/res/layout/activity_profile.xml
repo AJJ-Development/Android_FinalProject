@@ -13,9 +13,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="97dp"
         android:backgroundTint="@color/buttonColor"
         android:text="Logout" />
+
+    <Button
+        android:id="@+id/btnLikedGames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="160dp"
+        android:backgroundTint="@color/buttonColor"
+        android:text="View Liked Games" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
@@ -25,7 +35,6 @@
         app:menu="@menu/menu_bottom_navigation"
         app:itemIconTint="@drawable/statelistdrawable"
         app:itemTextColor="@drawable/statelistdrawable"
-        android:alpha="0.7"
         android:background="@color/grey"
         />
 
@@ -67,13 +76,24 @@
         android:textSize="26sp"
         tools:text="email" />
 
+    <Button
+        android:id="@+id/btnSetNewNickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etNewNickname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-4dp"
+        android:backgroundTint="@color/buttonColor"
+        android:text="set new nickname" />
+
     <EditText
         android:id="@+id/etNewNickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvProfileEmail"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="27dp"
+        android:backgroundTint="#000000"
         android:ems="10"
         android:hint="New Nickname"
         android:inputType="textPersonName"
@@ -81,16 +101,5 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textColorHint="#D8A7A7A7"
-        android:textCursorDrawable="@drawable/cursor"
-        android:backgroundTint="#000000"/>
-
-    <Button
-        android:id="@+id/btnSetNewNickname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etNewNickname"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/buttonColor"
-        android:text="set new nickname" />
+        android:textCursorDrawable="@drawable/cursor" />
 </RelativeLayout>

@@ -15,7 +15,6 @@
         app:menu="@menu/menu_bottom_navigation"
         app:itemIconTint="@drawable/statelistdrawable"
         app:itemTextColor="@drawable/statelistdrawable"
-        android:alpha="0.7"
         android:background="@color/grey"
         />
 </RelativeLayout>

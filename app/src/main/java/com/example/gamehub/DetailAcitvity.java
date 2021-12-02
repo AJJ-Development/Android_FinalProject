@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -27,6 +30,7 @@ public class DetailAcitvity extends AppCompatActivity {
     TextView tvDetGameDesc;
     RatingBar ratingBar;
     ImageView ivGameImage;
+    Button btnLikeGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class DetailAcitvity extends AppCompatActivity {
         tvDetGameDesc = findViewById(R.id.tvDetGameDesc);
         ratingBar = findViewById(R.id.ratingBar);
         ivGameImage = findViewById(R.id.ivGameImage);
+        btnLikeGame = findViewById(R.id.btnLikeGame);
 
         //Unwrap the game object that is sent to the details page
         Game game = Parcels.unwrap(getIntent().getParcelableExtra("game"));
@@ -71,6 +76,23 @@ public class DetailAcitvity extends AppCompatActivity {
                         break;
                 }
                 return true;
+            }
+        });
+
+        //-------------------- LIKE GAME CLICKED ----------------------//
+        btnLikeGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*
+                    if(game is not liked) {
+                        //Like the game
+                        //Increment liked game in database
+                    }
+                    else {
+                        //Unlike the game
+                        //Decrement liked game in database
+                    }
+                 */
             }
         });
     }
