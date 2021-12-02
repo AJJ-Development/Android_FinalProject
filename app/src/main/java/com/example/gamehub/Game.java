@@ -1,5 +1,7 @@
 package com.example.gamehub;
 
+import android.util.Log;
+
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -18,10 +20,10 @@ public class Game {
 
     String gameId;
     String title;
-    String overview;
     String image;
-    String slug;
     float rating;
+    String releaseDate;
+    String overview = "Release Date: ";
 
     public Game() {}
 
@@ -29,18 +31,25 @@ public class Game {
         gameId = jsonObject.getString("id");
         title = jsonObject.getString("name");
         image = jsonObject.getString("background_image");
-        slug = jsonObject.getString("slug");
-        //overview = jsonObject.getString("overview");
-        overview = "This is some test data This is some test data This is some test data This is some test dataThis is some test dataThis is some test dataThis is some test dataThis is some test dataThis is some test data";
         rating = (float)jsonObject.getDouble("rating");
+        releaseDate = jsonObject.getString("released");
+        overview = overview.concat(jsonObject.getString("released") + "\n\n" + "Platforms: ");
+
+        JSONArray platformsList = jsonObject.getJSONArray("platforms");
+
+        for (int i = 0; i < platformsList.length(); i++) {
+            String platform = platformsList.getJSONObject(i).getJSONObject("platform").getString("name");
+
+            overview.concat(platform + " ");
+        }
     }
 
     public static List<Game> fromJsonArray(JSONArray gameJsonArray) throws JSONException {
-        List<Game> movies = new ArrayList<>();
+        List<Game> games = new ArrayList<>();
         for( int i = 0; i < gameJsonArray.length(); i++) {
-            movies.add(new Game(gameJsonArray.getJSONObject(i)));
+            games.add(new Game(gameJsonArray.getJSONObject(i)));
         }
-        return movies;
+        return games;
     }
 
     public String getGameId() {
@@ -51,40 +60,13 @@ public class Game {
         return title;
     }
 
-    public String getOverview() {
-        return overview;
-    }
-
     public String getImage() {
         return image;
-    }
-
-    public String getSlug() {
-        return slug;
     }
 
     public float getRating() {
         return rating;
     }
 
-//    public static final String KEY_NAME = "name";
-//    public static final String KEY_DESC = "description";
-//    public static final String KEY_RATING = "rating";
-//    public static final String KEY_IMAGE = "image";
-//
-//    public String getKeyName() {
-//        return getString(KEY_NAME);
-//    }
-//
-//    public String getKeyDesc() {
-//        return getString(KEY_DESC);
-//    }
-//
-//    public double getKeyRating() {
-//        return getDouble(KEY_RATING);
-//    }
-//
-//    public ParseFile getKeyImage() {
-//        return getParseFile(KEY_IMAGE);
-//    }
+    public String getOverview() { return overview; }
 }
