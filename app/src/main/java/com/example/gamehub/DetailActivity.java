@@ -71,7 +71,12 @@ public class DetailActivity extends AppCompatActivity {
                 try {
                     tvDetGameDesc.setText(jsonObject.getString("description_raw"));
                     tvDetGameTitle.setText(game.getTitle());
-                    Glide.with(DetailActivity.this).load(game.getImage()).apply(new RequestOptions().override(1000, 500)).into(ivGameImage);
+                    Glide.with(DetailActivity.this)
+                            .load(game.getImage())
+                            .apply(new RequestOptions()
+                                    .override(1000, 500)
+                                    .placeholder(R.drawable.placeholder))
+                            .into(ivGameImage);
                     ratingBar.setRating((float) game.getRating());
                 } catch (JSONException e) {
                     Log.e(TAG, "hit json exception", e);
