@@ -8,12 +8,12 @@
 
     <ImageView
         android:id="@+id/ivGamePoster"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_width="161dp"
+        android:layout_height="110dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="-1dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -21,7 +21,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
         android:layout_toEndOf="@+id/ivGamePoster"
         android:textColor="@color/white"
         android:textSize="24sp"
