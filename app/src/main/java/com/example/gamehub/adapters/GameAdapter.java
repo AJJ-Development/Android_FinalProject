@@ -91,7 +91,12 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
             tvGameTitle.setText(game.getTitle());
             Log.i("Adapter", game.getOverview());
             tvGameDesc.setText(game.getOverview());
-            Glide.with(context).load(game.getImage()).apply(new RequestOptions().override(1000, 500)).into(ivGamePoster);
+            Glide.with(context)
+                    .load(game.getImage())
+                    .apply(new RequestOptions()
+                            .override(1000, 500)
+                            .placeholder(R.drawable.placeholder))
+                    .into(ivGamePoster);
 
             // 1. Register click listener on whole row
             container.setOnClickListener(new View.OnClickListener() {
