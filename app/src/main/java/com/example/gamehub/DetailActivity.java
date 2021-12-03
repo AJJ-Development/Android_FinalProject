@@ -39,7 +39,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView tvDetGameDesc;
     RatingBar ratingBar;
     ImageView ivGameImage;
-    Button btnLikeGame;
+    ImageView ivLikeGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class DetailActivity extends AppCompatActivity {
         tvDetGameDesc = findViewById(R.id.tvDetGameDesc);
         ratingBar = findViewById(R.id.ratingBar);
         ivGameImage = findViewById(R.id.ivGameImage);
-        btnLikeGame = findViewById(R.id.btnLikeGame);
+        ivLikeGame = findViewById(R.id.ivLikeGame);
 
         //Unwrap the game object that is sent to the details page
         Game game = Parcels.unwrap(getIntent().getParcelableExtra("game"));
@@ -116,19 +116,18 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         //-------------------- LIKE GAME CLICKED ----------------------//
-        btnLikeGame.setOnClickListener(new View.OnClickListener() {
+        ivLikeGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                    if(game is not liked) {
-                        //Like the game
-                        //Increment liked game in database
-                    }
-                    else {
-                        //Unlike the game
-                        //Decrement liked game in database
-                    }
-                 */
+                //If the heart icon is not filled in//
+                if (ivLikeGame.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.ic_baseline_favorite_border_24).getConstantState()) {
+                    //Fill in the heart icon//
+                    ivLikeGame.setImageResource(R.drawable.ic_baseline_favorite_24);
+                }
+                else {
+                    //Unfill the heart icon//
+                    ivLikeGame.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                }
             }
         });
     }

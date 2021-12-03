@@ -19,42 +19,21 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
     private BottomNavigationView bottomNavigationView;
     private Button btnTopRated;
-    private Button btnTrending;
     private Button btnNewReleases;
+    private Button btnPCOnly;
+    private Button btnMultiPlatGames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*IGDBWrapper wrapper = IGDBWrapper.INSTANCE;
-        wrapper.setCredentials("s5co5sej9ddx485f36bovcuiku3v5a", "4svc3xcddy9obdxyfbs05ny4mupdrn");
-        APICalypse apicalypse = new APICalypse().fields("*").sort("release_dates.date", Sort.DESCENDING);
-        try{
-            List<Game> games = ProtoRequestKt.games(wrapper, apicalypse);
-            Log.i(TAG, "games: " + games);
-        } catch(RequestException e) {
-            Log.e(TAG, "games: " + e.getMessage());
-        }*/
-
-//        byte[] bytes = new byte[0];
-//        try {
-//            bytes = wrapper.apiProtoRequest(Endpoints.GAMES, "fields *;");
-//        } catch (RequestException e) {
-//            e.printStackTrace();
-//        }
-//        List<Game> listOfGames = GameResult.parseFrom(bytes).getGamesList();
-//
-//        for (Game i : listOfGames) {
-//            Log.i(TAG, "game: " + i);
-//        }
-
-
         // Initialize layout objects -------------------------------
         bottomNavigationView = findViewById(R.id.bottomNavigation);
         btnTopRated = findViewById(R.id.btnTopRated);
-        btnTrending = findViewById(R.id.btnTrending);
         btnNewReleases = findViewById(R.id.btnNewReleases);
+        btnPCOnly = findViewById(R.id.btnPCOnly);
+        btnMultiPlatGames = findViewById(R.id.btnMultiPlatGames);
 
         // Button Click Listeners ----------------------------------
         //--------------- NAV BUTTON CLICKED ----------------- //
@@ -85,21 +64,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //-------------------- TRENDING BUTTON ----------------------//
-        btnTrending.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, "onClick Trending Button");
-                goGameListActivity("trending");
-            }
-        });
-
         //-------------------- NEW RELEASES BUTTON ----------------------//
         btnNewReleases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick New Releases Button");
                 goGameListActivity("new_release");
+            }
+        });
+
+        //-------------------- PC Only BUTTON ----------------------//
+        btnPCOnly.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick PC Only Button");
+                goGameListActivity("pc_only");
+            }
+        });
+
+        //-------------------- Multi-Platform BUTTON ----------------------//
+        btnMultiPlatGames.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick Multi-Platform Button");
+                goGameListActivity("multi_platform");
             }
         });
     }
