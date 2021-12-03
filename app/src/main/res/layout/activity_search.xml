@@ -39,6 +39,7 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/rounded_edittext"
         android:ems="10"
+        android:focusable="auto"
         android:hint="Search Game..."
         android:inputType="textPersonName"
         android:minHeight="48dp"
