@@ -8,39 +8,17 @@
     tools:context=".MainActivity"
     android:background="@drawable/gradient_background">
 
-    <ImageView
-        android:id="@+id/ivController"
-        android:layout_width="wrap_content"
-        android:layout_height="158dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="88dp"
-        app:srcCompat="@drawable/controller" />
-
     <Button
-        android:id="@+id/btnNewReleases"
+        android:id="@+id/btnPCOnly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="121dp"
-        android:layout_marginBottom="205dp"
+        android:layout_marginEnd="111dp"
+        android:layout_marginBottom="250dp"
         android:backgroundTint="@color/buttonColor"
-        android:text="New Releases"
-        android:textSize="17dp" />
-
-    <Button
-        android:id="@+id/btnTrending"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="141dp"
-        android:layout_marginBottom="299dp"
-        android:backgroundTint="@color/buttonColor"
-        android:text="Trending"
+        android:text="PC Only Games"
         android:textSize="17dp" />
 
     <Button
@@ -50,10 +28,47 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="137dp"
-        android:layout_marginBottom="393dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="407dp"
         android:backgroundTint="@color/buttonColor"
         android:text="Top Rated"
+        android:textSize="17dp" />
+
+    <Button
+        android:id="@+id/btnNewReleases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="327dp"
+        android:backgroundTint="@color/buttonColor"
+        android:text="New Releases"
+        android:textSize="17dp" />
+
+    <ImageView
+        android:id="@+id/ivController"
+        android:layout_width="wrap_content"
+        android:layout_height="158dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="76dp"
+        app:srcCompat="@drawable/controller" />
+
+    <Button
+        android:id="@+id/btnMultiPlatGames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="168dp"
+        android:backgroundTint="@color/buttonColor"
+        android:text="Multi-Platform Games"
         android:textSize="17dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
