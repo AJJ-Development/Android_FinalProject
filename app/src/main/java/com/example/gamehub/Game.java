@@ -33,14 +33,14 @@ public class Game {
         image = jsonObject.getString("background_image");
         rating = (float)jsonObject.getDouble("rating");
         releaseDate = jsonObject.getString("released");
-        overview = overview.concat(jsonObject.getString("released") + "\n\n" + "Platforms: ");
+        overview = overview.concat(jsonObject.getString("released") + "\n" + "Platforms: ");
 
         JSONArray platformsList = jsonObject.getJSONArray("platforms");
 
         for (int i = 0; i < platformsList.length(); i++) {
             String platform = platformsList.getJSONObject(i).getJSONObject("platform").getString("name");
 
-            overview.concat(platform + " ");
+            overview = overview.concat(platform + " ");
         }
     }
 
