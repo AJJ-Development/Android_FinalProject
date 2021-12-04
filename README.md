@@ -29,12 +29,13 @@ This app allows for video game users to view the all their video games. They wil
 - [X]  Account creation/login
 - [X]  Timeline (games)
 - [X]  Details page for each game
-    - [X]  Display game image and title
+    - [X] Display game image and title
     - [X] Show game description
+    - [X] Allow the user to like a game
 - [X] User profile page
     - [X] Can view who is signed in as well as displays temporary profile picture
     - [X] User can sign out
-- [ ] Search for games
+- [X] Search for games
 - [X] User can find games by genre, top tending, new releases, etc.
 - [X] Display a list of games with game title, image, and short description of game
 
