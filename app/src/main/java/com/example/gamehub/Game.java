@@ -22,6 +22,7 @@ public class Game {
     String title;
     String image;
     float rating;
+    float[] ratingsArr = new float[4];
     String releaseDate;
     String overview = "Release Date: ";
 
@@ -36,11 +37,16 @@ public class Game {
         overview = overview.concat(jsonObject.getString("released") + "\n" + "Platforms: ");
 
         JSONArray platformsList = jsonObject.getJSONArray("platforms");
+        JSONArray ratingsList = jsonObject.getJSONArray("ratings");
 
         for (int i = 0; i < platformsList.length(); i++) {
             String platform = platformsList.getJSONObject(i).getJSONObject("platform").getString("name");
 
             overview = overview.concat(platform + " ");
+        }
+
+        for (int i = 0; i < ratingsList.length(); i++) {
+            ratingsArr[i] = (float)ratingsList.getJSONObject(i).getDouble("percent");
         }
     }
 
@@ -67,6 +73,8 @@ public class Game {
     public float getRating() {
         return rating;
     }
+
+    public float[] getRatingsArr() { return ratingsArr; }
 
     public String getOverview() { return overview; }
 }
