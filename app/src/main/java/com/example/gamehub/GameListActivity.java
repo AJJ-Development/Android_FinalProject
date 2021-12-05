@@ -39,6 +39,8 @@ public class GameListActivity extends AppCompatActivity {
     public static final String BASE_URL = "https://api.rawg.io/api/games?key=bb55f483d7464f99917c8e1f821f9cfc";
     public static final String TOP_RATED_QUERY = "&metacritic=80";
     public static final String NEW_RELEASES_QUERY = "&dates=2021-01-01,2021-12-31";
+    public static final String PC_ONLY_QUERY = "&platforms_count=1&platforms=4";
+    public static final String MULTI_PLATFORM_QUERY = "&platforms_count=5";
     public static String NEXT_PAGE_URL = "";
     public static String GAMES_LIST_URL = BASE_URL;
     private BottomNavigationView bottomNavigationView;
@@ -82,6 +84,15 @@ public class GameListActivity extends AppCompatActivity {
         }
         else if (btnClicked.equalsIgnoreCase("new_release")) {
             GAMES_LIST_URL = GAMES_LIST_URL + NEW_RELEASES_QUERY;
+        }
+        else if (btnClicked.equalsIgnoreCase("pc_only")) {
+            GAMES_LIST_URL = GAMES_LIST_URL + PC_ONLY_QUERY;
+        }
+        else if (btnClicked.equalsIgnoreCase("multi_platform")) {
+            GAMES_LIST_URL = GAMES_LIST_URL + MULTI_PLATFORM_QUERY;
+        }
+        else if (btnClicked.equalsIgnoreCase("liked_games")) {
+            getLikedGames();
         }
 
         tvListTitle.setText(btnClicked.toUpperCase().replace("_", " "));
@@ -143,6 +154,10 @@ public class GameListActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    private void getLikedGames() {
+
     }
 
     private void loadMoreData() {
