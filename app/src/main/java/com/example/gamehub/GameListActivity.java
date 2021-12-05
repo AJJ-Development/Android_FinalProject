@@ -87,11 +87,13 @@ public class GameListActivity extends AppCompatActivity {
         }
         else if (btnClicked.equalsIgnoreCase("liked_games")) {
             getLikedGames();
+        }
         else if(btnClicked.equalsIgnoreCase("multiplayer")) {
             GAMES_LIST_URL = GAMES_LIST_URL + TAGS_QUERY;
         }
         else if(btnClicked.equalsIgnoreCase("pc_only")) {
             GAMES_LIST_URL = GAMES_LIST_URL + PC_ONLY_QUERY;
+        }
 
         tvListTitle.setText(btnClicked.toUpperCase().replace("_", " "));
 
