@@ -85,12 +85,13 @@ public class GameListActivity extends AppCompatActivity {
         else if (btnClicked.equalsIgnoreCase("new_release")) {
             GAMES_LIST_URL = GAMES_LIST_URL + NEW_RELEASES_QUERY;
         }
+        else if (btnClicked.equalsIgnoreCase("liked_games")) {
+            getLikedGames();
         else if(btnClicked.equalsIgnoreCase("multiplayer")) {
             GAMES_LIST_URL = GAMES_LIST_URL + TAGS_QUERY;
         }
         else if(btnClicked.equalsIgnoreCase("pc_only")) {
             GAMES_LIST_URL = GAMES_LIST_URL + PC_ONLY_QUERY;
-        }
 
         tvListTitle.setText(btnClicked.toUpperCase().replace("_", " "));
 
@@ -151,6 +152,10 @@ public class GameListActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    private void getLikedGames() {
+
     }
 
     private void loadMoreData() {
