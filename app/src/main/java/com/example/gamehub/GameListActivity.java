@@ -10,9 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
@@ -21,13 +19,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import java.util.ArrayList;
@@ -51,6 +48,7 @@ public class GameListActivity extends AppCompatActivity {
 
     AsyncHttpClient client = new AsyncHttpClient();
 
+    List<Game> apiGames;
     List<Game> games;
 
     EndlessRecyclerViewScrollListener scrollListener;
@@ -63,6 +61,7 @@ public class GameListActivity extends AppCompatActivity {
         GAMES_LIST_URL = BASE_URL;
 
         RecyclerView rvGames = findViewById(R.id.rvGames);
+        apiGames = new ArrayList<>();
         games = new ArrayList<>();
         tvListTitle = findViewById(R.id.tvListTitle);
 
@@ -86,7 +85,7 @@ public class GameListActivity extends AppCompatActivity {
             GAMES_LIST_URL = GAMES_LIST_URL + NEW_RELEASES_QUERY;
         }
         else if (btnClicked.equalsIgnoreCase("liked_games")) {
-            getLikedGames();
+            //getLikedGames();
         }
         else if(btnClicked.equalsIgnoreCase("multiplayer")) {
             GAMES_LIST_URL = GAMES_LIST_URL + TAGS_QUERY;
@@ -100,7 +99,9 @@ public class GameListActivity extends AppCompatActivity {
         scrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                loadMoreData();
+                if (!btnClicked.equalsIgnoreCase("liked_games")) {
+                    loadMoreData();
+                }
             }
         };
         // Adds the scroll listener to RecyclerView
@@ -116,7 +117,14 @@ public class GameListActivity extends AppCompatActivity {
                     NEXT_PAGE_URL = jsonObject.getString("next");
                     gameAdapter.clear();
                     games.addAll(Game.fromJsonArray(results));
-                    gameAdapter.notifyDataSetChanged();
+                    apiGames.addAll(games);
+                    if (!btnClicked.equalsIgnoreCase("liked_games")) {
+                        Log.i(TAG, "populating");
+                        gameAdapter.notifyDataSetChanged();
+                    }
+                    else {
+                        getLikedGames();
+                    }
                 } catch (JSONException e) {
                     Log.e(TAG, "Hit json exception", e);
                     e.printStackTrace();
@@ -157,11 +165,31 @@ public class GameListActivity extends AppCompatActivity {
     }
 
     private void getLikedGames() {
-
+        String currUsername = ParseUser.getCurrentUser().getUsername();
+        ParseQuery<LikedGames> query = ParseQuery.getQuery(LikedGames.class);
+        query.include(LikedGames.KEY_USER);
+        query.setLimit(20);
+        query.addDescendingOrder(LikedGames.KEY_CREATED_AT);
+        query.findInBackground(new FindCallback<LikedGames>() {
+            @Override
+            public void done(List<LikedGames> likedGames, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting posts", e);
+                }
+                gameAdapter.clear();
+                for (LikedGames likedGame : likedGames) {
+                    for (Game game : apiGames) {
+                        if (likedGame.getGameId().equals(game.getGameId()) && currUsername.equals(likedGame.getUser().getUsername())) {
+                            games.add(game);
+                        }
+                    }
+                }
+                gameAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void loadMoreData() {
-        // 1. Send an API request to retrieve appropriate paginated data
         client.get(NEXT_PAGE_URL, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
