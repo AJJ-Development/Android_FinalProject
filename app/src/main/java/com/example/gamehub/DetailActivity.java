@@ -126,10 +126,10 @@ public class DetailActivity extends AppCompatActivity {
 
                     //Add colors to dataset
                     ArrayList<Integer> colors = new ArrayList<>();
-                    colors.add(Color.GREEN);
-                    colors.add(Color.BLUE);
-                    colors.add(Color.YELLOW);
-                    colors.add(Color.RED);
+                    colors.add(getResources().getColor(R.color.excellent));
+                    colors.add(getResources().getColor(R.color.good));
+                    colors.add(getResources().getColor(R.color.bad));
+                    colors.add(getResources().getColor(R.color.terrible));
 
                     pieDataSet.setColors(colors);
 
