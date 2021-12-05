@@ -7,6 +7,35 @@
     android:background="@drawable/gradient_background"
     tools:context=".DetailActivity">
 
+    <RelativeLayout
+        android:id="@+id/rateAndLikeSection"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/ivGameImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/Widget.AppCompat.RatingBar.Indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="2.5"
+            android:secondaryProgress="5"
+            android:secondaryProgressTint="#4B4B4B" />
+
+        <ImageView
+            android:id="@+id/ivLikeGame"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="30dp"
+            android:layout_toEndOf="@+id/ratingBar"
+            app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
+    </RelativeLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
@@ -17,20 +46,6 @@
         app:itemTextColor="@drawable/statelistdrawable"
         app:menu="@menu/menu_bottom_navigation" />
 
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        style="@style/Widget.AppCompat.RatingBar.Indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ivLikeGame"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:isIndicator="true"
-        android:numStars="5"
-        android:rating="2.5"
-        android:secondaryProgress="5"
-        android:secondaryProgressTint="#4B4B4B" />
 
     <ImageView
         android:id="@+id/ivGameImage"
@@ -46,13 +61,14 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottomNavigation"
-        android:layout_below="@+id/ratingBar"
+        android:layout_below="@+id/rateAndLikeSection"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="0dp"
         android:fillViewport="true"
         android:scrollbars="vertical">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,16 +110,5 @@
         android:textColor="@color/white"
         android:textSize="30sp"
         tools:text="Battlefield 4" />
-
-    <ImageView
-        android:id="@+id/ivLikeGame"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="185dp"
-        app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
 
 </RelativeLayout>
