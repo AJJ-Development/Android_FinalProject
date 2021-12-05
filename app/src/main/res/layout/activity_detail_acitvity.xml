@@ -53,22 +53,33 @@
         android:layout_marginBottom="0dp"
         android:fillViewport="true"
         android:scrollbars="vertical">
-
-        <TextView
-            android:id="@+id/tvDetGameDesc"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ratingBar"
-            android:layout_alignParentStart="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            tools:text="This is a first-person shooting game where players join forces against aliens. This gamer takes place in the 20th century." />
+            android:orientation="vertical">
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChart"
+                android:layout_width="372dp"
+                android:layout_height="306dp"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/tvDetGameDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ratingBar"
+                android:layout_alignParentStart="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                tools:text="This is a first-person shooting game where players join forces against aliens. This gamer takes place in the 20th century." />
+        </LinearLayout>
     </ScrollView>
 
     <TextView
