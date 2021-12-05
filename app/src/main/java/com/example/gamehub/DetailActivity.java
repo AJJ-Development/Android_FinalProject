@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -12,17 +13,27 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcels;
+
+import java.util.ArrayList;
 
 import okhttp3.Headers;
 
@@ -40,6 +51,8 @@ public class DetailActivity extends AppCompatActivity {
     RatingBar ratingBar;
     ImageView ivGameImage;
     ImageView ivLikeGame;
+    PieChart pieChart;
+    float[] ratingsArr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +66,21 @@ public class DetailActivity extends AppCompatActivity {
         ratingBar = findViewById(R.id.ratingBar);
         ivGameImage = findViewById(R.id.ivGameImage);
         ivLikeGame = findViewById(R.id.ivLikeGame);
+        pieChart = findViewById(R.id.pieChart);
 
         //Unwrap the game object that is sent to the details page
         Game game = Parcels.unwrap(getIntent().getParcelableExtra("game"));
+
+        pieChart.setHoleRadius(20);
+        pieChart.setCenterText("Reviews");
+        pieChart.setRotationEnabled(true);
+        pieChart.setTransparentCircleAlpha(0);
+
+        ArrayList<PieEntry> yList = new ArrayList<>();
+        ArrayList<String> xList = new ArrayList<>();
+
+        String[] xArr = {"Excellent", "Good", "Bad", "Terrible"};
+        ratingsArr = new float[4];
 
         id = game.getGameId();
         Log.i(TAG, "API Endpoint: " + GAME_DETAIL_URL);
@@ -66,6 +91,7 @@ public class DetailActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
+
                 Log.i(TAG, "onSuccess");
                 JSONObject jsonObject = json.jsonObject;
                 try {
@@ -78,6 +104,33 @@ public class DetailActivity extends AppCompatActivity {
                                     .placeholder(R.drawable.placeholder))
                             .into(ivGameImage);
                     ratingBar.setRating((float) game.getRating());
+
+                    ratingsArr = game.getRatingsArr();
+                    for (int i = 0; i < 4; i++) {
+                        Log.i(TAG, "Rating # " + i + ": " + ratingsArr[i]);
+                        yList.add(new PieEntry(ratingsArr[i], i));
+                        xList.add(xArr[i]);
+                    }
+
+                    //Create data set
+                    PieDataSet pieDataSet = new PieDataSet(yList, "Ratings");
+                    pieDataSet.setSliceSpace(2);
+                    pieDataSet.setValueTextSize(12);
+
+                    //Add colors to dataset
+                    ArrayList<Integer> colors = new ArrayList<>();
+                    colors.add(Color.GREEN);
+                    colors.add(Color.BLUE);
+                    colors.add(Color.YELLOW);
+                    colors.add(Color.RED);
+
+                    pieDataSet.setColors(colors);
+
+                    //Add legend to chart
+                    PieData pieData = new PieData(pieDataSet);
+                    pieChart.setData(pieData);
+                    pieChart.invalidate();
+
                 } catch (JSONException e) {
                     Log.e(TAG, "hit json exception", e);
                     e.printStackTrace();
@@ -128,6 +181,28 @@ public class DetailActivity extends AppCompatActivity {
                     //Unfill the heart icon//
                     ivLikeGame.setImageResource(R.drawable.ic_baseline_favorite_border_24);
                 }
+            }
+        });
+
+        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                int pos1 = e.toString().indexOf("y: ");
+                String percentage = e.toString().substring(pos1 + 3);
+
+                for(int i = 0; i < ratingsArr.length; i++) {
+                    if(ratingsArr[i] == Float.parseFloat(percentage)) {
+                        pos1 = i;
+                        break;
+                    }
+                }
+                String ratingType = xArr[pos1];
+                Toast.makeText(DetailActivity.this, "Rating: " + ratingType, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected() {
+
             }
         });
     }

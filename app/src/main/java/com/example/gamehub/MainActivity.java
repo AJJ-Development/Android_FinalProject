@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         btnTopRated = findViewById(R.id.btnTopRated);
         btnNewReleases = findViewById(R.id.btnNewReleases);
         btnPCOnly = findViewById(R.id.btnPCOnly);
-        btnMultiPlatGames = findViewById(R.id.btnMultiPlatGames);
+        btnMultiPlatGames = findViewById(R.id.btnMultiPlayGames);
 
         // Button Click Listeners ----------------------------------
         //--------------- NAV BUTTON CLICKED ----------------- //
@@ -86,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
         btnMultiPlatGames.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(TAG, "onClick Multi-Platform Button");
-                goGameListActivity("multi_platform");
+                Log.i(TAG, "onClick Multiplayer Button");
+                goGameListActivity("multiplayer");
             }
         });
     }

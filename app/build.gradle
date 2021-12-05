@@ -53,4 +53,5 @@ dependencies {
 
     implementation 'com.codepath.libraries:asynchttpclient:0.0.9'
 
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
