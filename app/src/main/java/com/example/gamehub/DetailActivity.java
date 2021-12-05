@@ -27,6 +27,12 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +40,7 @@ import org.json.JSONObject;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Headers;
 
@@ -95,6 +102,7 @@ public class DetailActivity extends AppCompatActivity {
                 Log.i(TAG, "onSuccess");
                 JSONObject jsonObject = json.jsonObject;
                 try {
+                    getLikedGame(game.getGameId(), ParseUser.getCurrentUser());
                     tvDetGameDesc.setText(jsonObject.getString("description_raw"));
                     tvDetGameTitle.setText(game.getTitle());
                     Glide.with(DetailActivity.this)
@@ -104,7 +112,6 @@ public class DetailActivity extends AppCompatActivity {
                                     .placeholder(R.drawable.placeholder))
                             .into(ivGameImage);
                     ratingBar.setRating((float) game.getRating());
-
                     ratingsArr = game.getRatingsArr();
                     for (int i = 0; i < 4; i++) {
                         Log.i(TAG, "Rating # " + i + ": " + ratingsArr[i]);
@@ -176,10 +183,12 @@ public class DetailActivity extends AppCompatActivity {
                 if (ivLikeGame.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.ic_baseline_favorite_border_24).getConstantState()) {
                     //Fill in the heart icon//
                     ivLikeGame.setImageResource(R.drawable.ic_baseline_favorite_24);
+                    likeGame(game.getGameId(), ParseUser.getCurrentUser());
                 }
                 else {
                     //Unfill the heart icon//
                     ivLikeGame.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                    unlikeGame(game.getGameId(), ParseUser.getCurrentUser());
                 }
             }
         });
@@ -203,6 +212,74 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected() {
 
+            }
+        });
+    }
+
+    private void unlikeGame(String gameId, ParseUser user) {
+        ParseQuery<LikedGames> query = ParseQuery.getQuery(LikedGames.class);
+        query.include(LikedGames.KEY_USER);
+        query.setLimit(20);
+        query.addDescendingOrder(LikedGames.KEY_CREATED_AT);
+        query.findInBackground(new FindCallback<LikedGames>() {
+            @Override
+            public void done(List<LikedGames> likedGames, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting games", e);
+                }
+                for (LikedGames likedGame : likedGames) {
+                    if (likedGame.getGameId().equals(gameId) && likedGame.getUser().getUsername().equalsIgnoreCase(user.getUsername())) {
+                        likedGame.put("user", ParseUser.createWithoutData("_User", "NGrmdkbeBK"));
+                        likedGame.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                if (e != null) {
+                                    Log.e(TAG, "Error while saving", e);
+                                    Toast.makeText(DetailActivity.this, "Error while disliking!", Toast.LENGTH_SHORT).show();
+                                }
+                                Log.i(TAG, "Game disliked successfully!");
+                                Toast.makeText(DetailActivity.this, "Game disliked successfully!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }
+            }
+        });
+    }
+
+    private void likeGame(String gameId, ParseUser user) {
+        LikedGames likedGame = new LikedGames();
+        likedGame.setGameId(gameId);
+        likedGame.setUser(user);
+        likedGame.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Error while saving", e);
+                    Toast.makeText(DetailActivity.this, "Error while liking!", Toast.LENGTH_SHORT).show();
+                }
+                Log.i(TAG, "Game liked successfully!");
+                Toast.makeText(DetailActivity.this, "Game liked successfully!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void getLikedGame(String gameId, ParseUser user) {
+        ParseQuery<LikedGames> query = ParseQuery.getQuery(LikedGames.class);
+        query.include(LikedGames.KEY_USER);
+        query.setLimit(20);
+        query.addDescendingOrder(LikedGames.KEY_CREATED_AT);
+        query.findInBackground(new FindCallback<LikedGames>() {
+            @Override
+            public void done(List<LikedGames> likedGames, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting games", e);
+                }
+                for (LikedGames likedGame : likedGames) {
+                    if (likedGame.getGameId().equals(gameId) && likedGame.getUser().getUsername().equalsIgnoreCase(user.getUsername())) {
+                        ivLikeGame.setImageResource(R.drawable.ic_baseline_favorite_24);
+                    }
+                }
             }
         });
     }
