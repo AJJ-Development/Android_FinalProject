@@ -41,11 +41,11 @@ This app allows for video game users to view the all their video games. They wil
 
 **Optional Nice-to-have Stories**
 
-- [ ] Display reviews for games on the details page
-- [ ] Allow user to view all liked games
+- [X] Display ratings/reviews for games on the details page (In form of pie chart)
+- [X] Allow user to view all liked games
 - [ ] Send user to twitch to watch the game being played (twitch integration)
 - [ ] Youtube trailer on game details page
-- [ ] Upload picture to a profile
+- [X] Upload picture to a profile
 
 ### 2. Screen Archetypes
 
