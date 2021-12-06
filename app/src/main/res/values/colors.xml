@@ -10,8 +10,8 @@
     <color name="buttonColor">#4B5774</color>
     <color name="grey">#CDCDCD</color>
     <color name="red">#C2003C</color>
-    <color name="excellent">#D14CAF50</color>
-    <color name="good">#CA0085C1</color>
-    <color name="bad">#E4C43D13</color>
-    <color name="terrible">#CEBA0404</color>
+    <color name="excellent">#D10B889F</color>
+    <color name="good">#0D4760</color>
+    <color name="bad">#E7FF8442</color>
+    <color name="terrible">#C61616</color>
 </resources>

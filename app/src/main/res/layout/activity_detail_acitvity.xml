@@ -25,7 +25,8 @@
             android:numStars="5"
             android:rating="2.5"
             android:secondaryProgress="5"
-            android:secondaryProgressTint="#4B4B4B" />
+            android:secondaryProgressTint="#4B4B4B"
+            android:theme="@style/RatingBar"/>
 
         <ImageView
             android:id="@+id/ivLikeGame"
