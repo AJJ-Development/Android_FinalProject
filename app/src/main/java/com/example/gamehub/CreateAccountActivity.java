@@ -75,7 +75,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                 }
                 else {
                     createUser(username, password, email);
-                    //loginUser(username, password);
                 }
             }
         });
@@ -83,28 +82,6 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     }
 
-    /*
-    // TODO: Add code to log user in (should be same as loginActivity)
-    private void loginUser(String username, String password) {
-        Log.i(TAG, "Logging user in -- Username: " + username + " Password: " + password);
-
-       ParseUser.logInInBackground(username, password, new LogInCallback() {
-            @Override
-            public void done(ParseUser user, ParseException e) {
-                if( e != null) {
-                    Log.e(TAG, "Issue with login", e);
-                    Toast.makeText(LoginActivity.this, "Issue with login!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                goMainActivity();
-                Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        goMainActivity(); //Get rid of this when back4app connection is made. It's in the commented code above
-    }*/
-
-    // TODO: Add code to create user in backend
     private void createUser(String username, String password, String email) {
         Log.i(TAG, "Create user");
 
@@ -123,7 +100,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                     return;
                 }
                 goMainActivity();
-                Toast.makeText(CreateAccountActivity.this, "Success!", Toast.LENGTH_SHORT).show();
             }
         });
     }

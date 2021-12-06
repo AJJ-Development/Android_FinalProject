@@ -235,10 +235,8 @@ public class DetailActivity extends AppCompatActivity {
                             public void done(ParseException e) {
                                 if (e != null) {
                                     Log.e(TAG, "Error while saving", e);
-                                    Toast.makeText(DetailActivity.this, "Error while disliking!", Toast.LENGTH_SHORT).show();
                                 }
                                 Log.i(TAG, "Game disliked successfully!");
-                                Toast.makeText(DetailActivity.this, "Game disliked successfully!", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -256,10 +254,8 @@ public class DetailActivity extends AppCompatActivity {
             public void done(ParseException e) {
                 if (e != null) {
                     Log.e(TAG, "Error while saving", e);
-                    Toast.makeText(DetailActivity.this, "Error while liking!", Toast.LENGTH_SHORT).show();
                 }
                 Log.i(TAG, "Game liked successfully!");
-                Toast.makeText(DetailActivity.this, "Game liked successfully!", Toast.LENGTH_SHORT).show();
             }
         });
     }
