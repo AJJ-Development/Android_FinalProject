@@ -103,7 +103,6 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "Log out user");
-                Toast.makeText(ProfileActivity.this, "Logging Out", Toast.LENGTH_SHORT).show();
                 ParseUser.logOut();
                 goLoginActivity();
             }
