@@ -216,3 +216,6 @@ This app allows for video game users to view the all their video games. They wil
 
 ## Sprint 2
 <img src="Sprint2.gif" width=350>
+
+## Sprint 3
+<img src="Sprint3.gif" width=350>
