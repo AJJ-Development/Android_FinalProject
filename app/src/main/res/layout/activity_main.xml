@@ -9,24 +9,13 @@
     android:background="@drawable/gradient_background">
 
     <Button
-        android:id="@+id/btnPCOnly"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnNewReleases"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/buttonColor"
-        android:text="PC Only Games"
-        android:textSize="17dp" />
-
-    <Button
         android:id="@+id/btnTopRated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivController"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="131dp"
         android:backgroundTint="@color/buttonColor"
         android:text="Top Rated"
@@ -54,17 +43,6 @@
         android:layout_marginEnd="76dp"
         app:srcCompat="@drawable/controller" />
 
-    <Button
-        android:id="@+id/btnMultiPlayGames"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnPCOnly"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/buttonColor"
-        android:text="Multiplayer Games"
-        android:textSize="17dp" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
@@ -75,4 +53,32 @@
         app:itemTextColor="@drawable/statelistdrawable"
         android:background="@color/grey"
         />
+
+    <Spinner
+        android:id="@+id/spnPlatform"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnNewReleases"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="100dp"
+        android:background="@drawable/search_dropdown"
+        android:entries="@array/console_array"
+        android:minHeight="48dp"
+        android:textAlignment="center" />
+
+    <Spinner
+        android:id="@+id/spnPlayers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spnPlatform"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="100dp"
+        android:background="@drawable/search_dropdown"
+        android:entries="@array/style_array"
+        android:minHeight="48dp"
+        android:textAlignment="center" />
 </RelativeLayout>

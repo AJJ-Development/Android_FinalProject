@@ -4,11 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -19,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Button btnTopRated;
     private Button btnNewReleases;
-    private Button btnPCOnly;
-    private Button btnMultiPlatGames;
+    private Spinner spnPlatform;
+    private Spinner spnStyle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigation);
         btnTopRated = findViewById(R.id.btnTopRated);
         btnNewReleases = findViewById(R.id.btnNewReleases);
-        btnPCOnly = findViewById(R.id.btnPCOnly);
-        btnMultiPlatGames = findViewById(R.id.btnMultiPlayGames);
+        spnPlatform = findViewById(R.id.spnPlatform);
+        spnStyle = findViewById(R.id.spnPlayers);
 
         // Button Click Listeners ----------------------------------
         //--------------- NAV BUTTON CLICKED ----------------- //
@@ -53,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Button Click Listeners -------------------------
         //-------------------- TOP RATED BUTTON ----------------------//
         btnTopRated.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,21 +75,55 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //-------------------- PC Only BUTTON ----------------------//
-        btnPCOnly.setOnClickListener(new View.OnClickListener() {
+        //-------------------- PLATFORM DROPDOWN ----------------------//
+        spnPlatform.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Log.i(TAG, "onClick PC Only Button");
-                goGameListActivity("pc_only");
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.i(TAG, "spinner: " + i);
+                ((TextView) adapterView.getChildAt(0)).setTextColor(getResources().getColor(R.color.white));
+                switch (i) {
+                    case 1:
+                        goGameListActivity("pc_only");
+                        break;
+                    case 2:
+                        goGameListActivity("xbox_only");
+                        break;
+                    case 3:
+                        goGameListActivity("playstation_only");
+                        break;
+                    case 4:
+                        goGameListActivity("ios_only");
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 
-        //-------------------- Multi-Platform BUTTON ----------------------//
-        btnMultiPlatGames.setOnClickListener(new View.OnClickListener() {
+        //-------------------- STYLE DROPDOWN ----------------------//
+        spnStyle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Log.i(TAG, "onClick Multiplayer Button");
-                goGameListActivity("multiplayer");
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.i(TAG, "spinner: " + i);
+                ((TextView) adapterView.getChildAt(0)).setTextColor(getResources().getColor(R.color.white));
+                switch (i) {
+                    case 1:
+                        goGameListActivity("multiplayer");
+                        break;
+                    case 2:
+                        goGameListActivity("singleplayer");
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }
