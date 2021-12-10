@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">GameHub</string>
+
+    <string-array name="console_array">
+        <item>PLATFORM</item>
+        <item>PC</item>
+        <item>Xbox</item>
+        <item>Playstation</item>
+        <item>iOS</item>
+    </string-array>
+
+    <string-array name="style_array">
+        <item>STYLE</item>
+        <item>Multiplayer</item>
+        <item>Singleplayer</item>
+    </string-array>
 </resources>

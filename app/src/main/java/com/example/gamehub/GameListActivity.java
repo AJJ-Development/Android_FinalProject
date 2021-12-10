@@ -36,8 +36,12 @@ public class GameListActivity extends AppCompatActivity {
     public static final String BASE_URL = "https://api.rawg.io/api/games?key=bb55f483d7464f99917c8e1f821f9cfc";
     public static final String TOP_RATED_QUERY = "&metacritic=80";
     public static final String NEW_RELEASES_QUERY = "&dates=2021-01-01,2021-12-31";
-    public static final String TAGS_QUERY = "&tags=multiplayer";
+    public static final String MULTIPLAYER_QUERY = "&tags=multiplayer";
+    public static final String SINGLEPLAYER_QUERY = "&tags=singleplayer";
     public static final String PC_ONLY_QUERY = "&platforms_count=1&platforms=4";
+    public static final String XB_ONLY_QUERY = "&platforms_count=1&platforms=3";
+    public static final String PS_ONLY_QUERY = "&platforms_count=1&platforms=2";
+    public static final String iOS_ONLY_QUERY = "&platforms_count=1&platforms=1";
     public static String NEXT_PAGE_URL = "";
     public static String GAMES_LIST_URL = BASE_URL;
     private BottomNavigationView bottomNavigationView;
@@ -88,10 +92,22 @@ public class GameListActivity extends AppCompatActivity {
             //getLikedGames();
         }
         else if(btnClicked.equalsIgnoreCase("multiplayer")) {
-            GAMES_LIST_URL = GAMES_LIST_URL + TAGS_QUERY;
+            GAMES_LIST_URL = GAMES_LIST_URL + MULTIPLAYER_QUERY;
+        }
+        else if(btnClicked.equalsIgnoreCase("singleplayer")) {
+            GAMES_LIST_URL = GAMES_LIST_URL + SINGLEPLAYER_QUERY;
         }
         else if(btnClicked.equalsIgnoreCase("pc_only")) {
             GAMES_LIST_URL = GAMES_LIST_URL + PC_ONLY_QUERY;
+        }
+        else if(btnClicked.equalsIgnoreCase("xbox_only")) {
+            GAMES_LIST_URL = GAMES_LIST_URL + XB_ONLY_QUERY;
+        }
+        else if(btnClicked.equalsIgnoreCase("playstation_only")) {
+            GAMES_LIST_URL = GAMES_LIST_URL + PS_ONLY_QUERY;
+        }
+        else if(btnClicked.equalsIgnoreCase("ios_only")) {
+            GAMES_LIST_URL = GAMES_LIST_URL + iOS_ONLY_QUERY;
         }
 
         tvListTitle.setText(btnClicked.toUpperCase().replace("_", " "));
