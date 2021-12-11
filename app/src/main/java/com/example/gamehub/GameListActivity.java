@@ -38,10 +38,10 @@ public class GameListActivity extends AppCompatActivity {
     public static final String NEW_RELEASES_QUERY = "&dates=2021-01-01,2021-12-31";
     public static final String MULTIPLAYER_QUERY = "&tags=multiplayer";
     public static final String SINGLEPLAYER_QUERY = "&tags=singleplayer";
-    public static final String PC_ONLY_QUERY = "&platforms_count=1&platforms=4";
-    public static final String XB_ONLY_QUERY = "&platforms_count=1&platforms=3";
-    public static final String PS_ONLY_QUERY = "&platforms_count=1&platforms=2";
-    public static final String iOS_ONLY_QUERY = "&platforms_count=1&platforms=1";
+    public static final String PC_ONLY_QUERY = "&platforms_count=1&platforms=4"; //4
+    public static final String XB_ONLY_QUERY = "&platforms_count=1&platforms=1"; //1
+    public static final String PS_ONLY_QUERY = "&platforms_count=1&platforms=7"; //
+    public static final String iOS_ONLY_QUERY = "&platforms_count=1&platforms=3";//3
     public static String NEXT_PAGE_URL = "";
     public static String GAMES_LIST_URL = BASE_URL;
     private BottomNavigationView bottomNavigationView;
@@ -103,7 +103,7 @@ public class GameListActivity extends AppCompatActivity {
         else if(btnClicked.equalsIgnoreCase("xbox_only")) {
             GAMES_LIST_URL = GAMES_LIST_URL + XB_ONLY_QUERY;
         }
-        else if(btnClicked.equalsIgnoreCase("playstation_only")) {
+        else if(btnClicked.equalsIgnoreCase("switch_only")) {
             GAMES_LIST_URL = GAMES_LIST_URL + PS_ONLY_QUERY;
         }
         else if(btnClicked.equalsIgnoreCase("ios_only")) {
