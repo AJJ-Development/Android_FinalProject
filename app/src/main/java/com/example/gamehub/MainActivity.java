@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                         goGameListActivity("xbox_only");
                         break;
                     case 3:
-                        goGameListActivity("playstation_only");
+                        goGameListActivity("switch_only");
                         break;
                     case 4:
                         goGameListActivity("ios_only");
@@ -131,19 +131,16 @@ public class MainActivity extends AppCompatActivity {
     private void goSearchActivity() {
         Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
-        finish();
     }
 
     private void goProfileActivity() {
         Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
-        finish();
     }
 
     private void goGameListActivity(String type) {
         Intent i = new Intent(this, GameListActivity.class);
         i.putExtra("type", type);
         startActivity(i);
-        finish();
     }
 }
